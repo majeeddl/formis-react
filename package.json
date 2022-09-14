@@ -1,19 +1,27 @@
 {
   "name": "formis-react",
-  "version": "1.0.1",
-  "description": "This is a react form builder",
+  "version": "1.0.5",
+  "description": "This is a react form generator",
   "author": "Majeed Dourandeesh",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/majeeddl/react-form-builder"
+    "url": "git+https://github.com/majeeddl/formis-react"
   },
-  "main": "./dist/react-form-builder.umd.js",
-  "module": "./dist/react-form-builder.es.js",
+  "keywords": [
+    "form builder",
+    "json"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/formis-react.umd.js",
+  "module": "./dist/formis-react.es.js",
   "exports": {
     ".": {
-      "import": "./dist/react-form-builder.es.js",
-      "require": "./dist/react-form-builder.umd.js"
+      "import": "./dist/formis-react.es.js",
+      "require": "./dist/formis-react.umd.js"
     }
   },
   "scripts": {

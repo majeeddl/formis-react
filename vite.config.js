@@ -10,8 +10,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/lib/index.jsx'),
-      name: 'React Form Builder',
-      fileName: (format) => `react-form-builder.${format}.js`
+      name: 'Formis React',
+      fileName: (format) => `formis-react.${format}.js`
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
