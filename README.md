@@ -2,7 +2,7 @@
 
 This project is a form generator for react apps
 
-[![NPM](https://img.shields.io/npm/v/react-form-builder.svg)](https://www.npmjs.com/package/@guidesmiths/react-form-builder) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 ![All Contributors](https://img.shields.io/github/forks/majeeddl/react-form-builder.svg)
 
 ![Issue Open](https://img.shields.io/github/issues/majeeddl/react-form-builder.svg)
