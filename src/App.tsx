@@ -1,18 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
 
-import { FormViewer,FormModeler} from "./lib/index"
+import { FormisViewer, FormisModeler } from "./lib/index";
 
 function App() {
-
   return (
     <div className="App">
-       <FormModeler></FormModeler>
+      <FormisModeler></FormisModeler>
 
-       <FormViewer></FormViewer>
+      <FormisViewer></FormisViewer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

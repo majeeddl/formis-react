@@ -1,17 +1,15 @@
-
 import React, { useState } from "react";
 import rtlPlugin from "stylis-plugin-rtl";
-import { createEmotionCache, MantineProvider } from '@mantine/core';
+import { createEmotionCache, MantineProvider } from "@mantine/core";
 
 const rtlCache = createEmotionCache({
   key: "mantine-rtl",
   stylisPlugins: [rtlPlugin],
 });
 
-const FormViewer = () => {
-
+const FormisViewer = () => {
   const [rtl, setRtl] = useState(false);
-  
+
   return (
     <MantineProvider
       withGlobalStyles
@@ -19,9 +17,9 @@ const FormViewer = () => {
       emotionCache={rtlCache}
       theme={{ dir: "rtl" }}
     >
-      <div>FormViewer</div>
+      <div>FormisViewer</div>
     </MantineProvider>
   );
-}
+};
 
-export default FormViewer
+export default FormisViewer;
