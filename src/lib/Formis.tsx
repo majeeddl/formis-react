@@ -1,6 +1,5 @@
 
 
-
 import React, { FunctionComponent, useState } from "react";
 import rtlPlugin from "stylis-plugin-rtl";
 import { createEmotionCache, MantineProvider } from "@mantine/core";
