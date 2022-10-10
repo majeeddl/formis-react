@@ -1,0 +1,28 @@
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
+
+import { FormisViewer, FormisModeler } from "./lib/index";
+<<<<<<< HEAD
+import DragAndDrop from "./views/DragAndDrop";
+=======
+>>>>>>> main
+
+function App() {
+  return (
+    <div className="App">
+<<<<<<< HEAD
+      {/* <FormisModeler></FormisModeler>
+      <FormisViewer></FormisViewer> */}
+
+      <DragAndDrop></DragAndDrop>
+=======
+      <FormisModeler></FormisModeler>
+
+      <FormisViewer></FormisViewer>
+>>>>>>> main
+    </div>
+  );
+}
+
+export default App;
