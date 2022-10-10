@@ -1,7 +1,10 @@
+import { Col, Grid } from "@mantine/core";
 import type { CSSProperties, FC } from "react";
 import { useDrop } from "react-dnd";
 
 import { ItemTypes } from "./ItemTypes";
+
+// import "./Dustbin.css";
 
 const style: CSSProperties = {
   height: "12rem",
@@ -35,8 +38,25 @@ export const Dustbin: FC = () => {
   }
 
   return (
-    <div ref={drop} style={{ ...style, backgroundColor }} data-testid="dustbin">
-      {isActive ? "Release to drop" : "Drag a box here"}
-    </div>
+    <>
+      <div
+        ref={drop}
+        style={{ ...style, backgroundColor }}
+        data-testid="dustbin"
+      >
+        {isActive ? "Release to drop" : "Drag a box here"}
+      </div>
+      {/* <Grid columns={24}>
+        <Col ref={drop} className="mantineGridCol" span={12}>
+          12 span
+        </Col>
+        <Col className="mantineGridCol" span={6}>
+          6 span
+        </Col>
+        <Col className="mantineGridCol" span={6}>
+          6 span
+        </Col>
+      </Grid> */}
+    </>
   );
 };
