@@ -15,8 +15,7 @@ type FormisPropsType = {
 }
 
 const Formis : FunctionComponent<FormisPropsType> = ({ rtl }) => {
-  const [_rtl, _setRtl] = useState(rtl
-    );
+  const [_rtl, _setRtl] = useState(rtl);
 
   return (
     <MantineProvider
