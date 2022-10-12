@@ -34,9 +34,9 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
-    "@mantine/core": "^5.4.1",
-    "@mantine/form": "^5.4.1",
-    "@mantine/hooks": "^5.4.1",
+    "@mantine/core": "^5.5.5",
+    "@mantine/form": "^5.5.5",
+    "@mantine/hooks": "^5.5.5",
     "antd": "^4.23.5",
     "bootstrap": "^5.2.2",
     "react": "^18.2.0",
