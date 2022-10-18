@@ -12,7 +12,7 @@ const FormModeler = () => {
           </Card>
         </Grid.Col>
         <Grid.Col span={20}>
-          <Card shadow="sm" p="lg" radius="md" withBorder bo>
+          <Card shadow="sm" p="lg" radius="md" withBorder >
             <div>salam</div>
           </Card>
         </Grid.Col>
