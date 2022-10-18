@@ -2,7 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
-import { FormisViewer, FormisModeler } from "./lib/index";
+import { Formis, FormisModeler } from "./lib/index";
 import DragAndDrop from "./views/DragAndDrop";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, Route, Routes } from "react-router-dom";
