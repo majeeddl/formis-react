@@ -37,6 +37,7 @@
     "@mantine/core": "^5.6.3",
     "@mantine/form": "^5.6.3",
     "@mantine/hooks": "^5.6.3",
+    "@tabler/icons": "^1.109.0",
     "antd": "^4.23.6",
     "bootstrap": "^5.2.2",
     "react": "^18.2.0",

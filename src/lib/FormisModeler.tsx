@@ -1,20 +1,23 @@
 import { Card, Grid } from "@mantine/core";
 import React from "react";
+import LeftPanel from "./modeler/LeftPanel";
 
 const FormModeler = () => {
   return (
     <>
       FormModeler
-      <Grid columns={24}>
-        <Grid.Col span={4}>
-          <Card shadow="sm" p="lg" radius="md" withBorder>
+      <Grid columns={24} className="mt-6 text-sm">
+        <Grid.Col span={8} className="border-gray-500 border border-solid">
+          {/* <Card shadow="sm" p="lg" radius="md" withBorder>
             <div>salam</div>
-          </Card>
+          </Card> */}
+
+          <LeftPanel></LeftPanel>
         </Grid.Col>
-        <Grid.Col span={20}>
-          <Card shadow="sm" p="lg" radius="md" withBorder >
+        <Grid.Col span={12} className="border-gray-500 border border-solid">
+          {/* <Card shadow="sm" p="lg" radius="md" withBorder>
             <div>salam</div>
-          </Card>
+          </Card> */}
         </Grid.Col>
       </Grid>
     </>

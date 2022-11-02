@@ -2,7 +2,7 @@ import { createContext, FunctionComponent, ReactElement, useState } from "react"
 
 
 export const ThemeContext = createContext({
-    dir : 'rtl',
+    dir : 'ltr',
     SetThemeDir : (_dir:string)=> {}
 });
 

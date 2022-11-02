@@ -1,5 +1,3 @@
-
-
 import React, { FunctionComponent, useState } from "react";
 import rtlPlugin from "stylis-plugin-rtl";
 import { createEmotionCache, MantineProvider } from "@mantine/core";
@@ -10,12 +8,11 @@ const rtlCache = createEmotionCache({
   stylisPlugins: [rtlPlugin],
 });
 
-
 type FormisPropsType = {
-    rtl ?: boolean
-}
+  rtl?: boolean;
+};
 
-const Formis : FunctionComponent<FormisPropsType> = ({ rtl = true }) => {
+const Formis: FunctionComponent<FormisPropsType> = ({ rtl = false }) => {
   const [_rtl, _setRtl] = useState(rtl);
 
   return (
