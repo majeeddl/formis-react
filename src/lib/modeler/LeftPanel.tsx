@@ -1,12 +1,17 @@
 import { Tabs } from "@mantine/core";
 import React, { useContext } from "react";
-import { IconPhoto, IconMessageCircle, IconSettings , IconListDetails } from "@tabler/icons";
+import {
+  IconPhoto,
+  IconMessageCircle,
+  IconSettings,
+  IconListDetails,
+} from "@tabler/icons";
 import { ThemeContext } from "../../store/ThemeProvider";
-import Controls from "./controls/Controls";
+import Controls from "../../components/leftPanel/Controls";
+import Settings from "../../components/leftPanel/Settings";
 
 const LeftPanel = () => {
-
-  const {dir } = useContext(ThemeContext)
+  const { dir } = useContext(ThemeContext);
 
   return (
     <>
@@ -20,28 +25,16 @@ const LeftPanel = () => {
             >
               Controls
             </Tabs.Tab>
-            {/* <Tabs.Tab
-              value="messages"
-              className="text-xs"
-              icon={<IconMessageCircle size={14} />}
-            >
-              Messages
-            </Tabs.Tab> */}
             <Tabs.Tab value="settings" icon={<IconSettings size={14} />}>
               Settings
             </Tabs.Tab>
           </Tabs.List>
 
           <Tabs.Panel value="controls" pt="xs">
-             <Controls></Controls>
+            <Controls></Controls>
           </Tabs.Panel>
-
-          <Tabs.Panel value="messages" pt="xs">
-            Messages tab content
-          </Tabs.Panel>
-
           <Tabs.Panel value="settings" pt="xs">
-            Settings tab content
+            <Settings></Settings>
           </Tabs.Panel>
         </Tabs>
       </div>

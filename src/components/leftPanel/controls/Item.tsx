@@ -16,7 +16,7 @@ interface DropResult {
 
 const Item: FunctionComponent<BoxProps> = ({ name }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.BOX,
+    type: "box",
     item: { name },
     end: (item, monitor) => {
       console.log("drop ...");

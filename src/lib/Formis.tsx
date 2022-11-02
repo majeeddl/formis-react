@@ -22,7 +22,7 @@ const Formis: FunctionComponent<FormisPropsType> = ({ rtl = false }) => {
       theme={{ dir: _rtl ? "rtl" : "ltr" }}
       emotionCache={_rtl ? rtlCache : undefined}
     >
-      <div>Formis</div>
+
       <FormisModeler></FormisModeler>
     </MantineProvider>
   );
