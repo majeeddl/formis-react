@@ -19,7 +19,7 @@ const FormModeler = () => {
 
             <LeftPanel></LeftPanel>
           </Grid.Col>
-          <Grid.Col span={12} className="border-gray-500 border border-solid">
+          <Grid.Col span={16} className="border-gray-500 border border-solid">
             <RightPanel></RightPanel>
           </Grid.Col>
         </Grid>

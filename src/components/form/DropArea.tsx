@@ -19,11 +19,15 @@ const style: CSSProperties = {
 
 export type DropAreaProps = {
   accept: string;
+  parent : any;
+  index? : number;
   onDrop?: (item: any) => void;
 };
 
 const DropArea: FunctionComponent<DropAreaProps> = ({
   accept,
+  parent = null,
+  index =0,
   onDrop = () => {},
 }) => {
 
@@ -38,8 +42,8 @@ const DropArea: FunctionComponent<DropAreaProps> = ({
       //   console.log(item)
       //   console.log(monitor)
       // },
-      drop: (item, monitor) => {
-        dispatch(addItem(item));
+      drop: (item:any, monitor) => {
+        dispatch(addItem({ ...item, parent,index }));
       },
       collect: (monitor) => ({
         isOver: monitor.isOver(),

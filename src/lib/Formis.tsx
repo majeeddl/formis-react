@@ -6,6 +6,8 @@ import { FormisModeler, FormisViewer } from ".";
 import { FormisProvider } from "../store/FormisProvider";
 import { store } from "../store/store";
 
+import "../assets/main.scss"
+
 const rtlCache = createEmotionCache({
   key: "mantine-rtl",
   stylisPlugins: [rtlPlugin],

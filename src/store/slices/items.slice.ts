@@ -1,5 +1,6 @@
 
 import { createSlice } from '@reduxjs/toolkit'
+import { v4 } from "uuid"
 
 const initialState = {
     items : []
@@ -11,8 +12,10 @@ export const itemsSlice = createSlice({
     initialState,
     reducers : {
         addItem : (state:any,action:any)=>{
-            // console.log(action)
-            state.items.push(action.payload)
+            console.log(action)
+            const item = action.payload
+            item.id = v4()
+            state.items.push(item)
         }
     }
 })

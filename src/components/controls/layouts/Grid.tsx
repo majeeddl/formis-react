@@ -20,10 +20,10 @@ const Grid: FC<GridPropsType> = ({
       <MantineGrid columns={columns}>
         {spans.map((span, index) => (
           <Col span={span} key={`s_${span}_${index}`}>
-            12
+            
             {
               // state == ControlStateEnum.Edit && (
-              <DropArea accept="box"></DropArea>
+              <DropArea accept="box" index={index} parent={null}></DropArea>
               // )
             }
           </Col>

@@ -24,7 +24,9 @@ const Control: FunctionComponent<ControlProps> = ({
 }) => {
   return (
     <>
-      <Grid state={state}></Grid>
+      <div className="control-box">
+        <Grid state={state}></Grid>
+      </div>
     </>
   );
 };
