@@ -37,8 +37,8 @@ function App() {
       </Navbar>
       <Container>
         <Routes>
-          {/* <Route path="/" element={<Formis></Formis>}></Route> */}
-          <Route path="/" element={<FormisModeler></FormisModeler>}></Route>
+          <Route path="/" element={<Formis></Formis>}></Route>
+          {/* <Route path="/" element={<FormisModeler></FormisModeler>}></Route> */}
           <Route
             path="/drag-and-drop"
             element={<DragAndDrop></DragAndDrop>}

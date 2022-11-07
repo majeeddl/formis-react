@@ -2,26 +2,27 @@ import React, { CSSProperties, FunctionComponent } from "react";
 import { useDrop } from "react-dnd";
 
 const style: CSSProperties = {
-  height: "12rem",
+  height: "1rem",
   width: "100%",
-  marginRight: "1.5rem",
-  marginBottom: "1.5rem",
-  color: "white",
+  // marginRight: "1.5rem",
+  // marginBottom: "1.5rem",
+  color: "silver",
   padding: "1rem",
   textAlign: "center",
   fontSize: "1rem",
-  lineHeight: "normal",
+  lineHeight: "middle",
+  border : '1px silver dashed'
 };
 
 export type DropAreaProps = {
   accept: string;
-  onDrop? : ()=>{}
+  onDrop : (item:any)=> void
 };
 
-const DropArea: FunctionComponent<DropAreaProps> = ({ accept }) => {
+const DropArea: FunctionComponent<DropAreaProps> = ({ accept ,onDrop }) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: accept,
-    drop: () => ({ name: "Dustbin" }),
+    drop: onDrop,
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
@@ -29,11 +30,11 @@ const DropArea: FunctionComponent<DropAreaProps> = ({ accept }) => {
   }));
 
   const isActive = canDrop && isOver;
-  let backgroundColor = "#222";
+  let backgroundColor = "whitesmoke";
   if (isActive) {
-    backgroundColor = "darkgreen";
+    // backgroundColor = "darkgreen";
   } else if (canDrop) {
-    backgroundColor = "darkkhaki";
+    // backgroundColor = "darkkhaki";
   }
 
   return (

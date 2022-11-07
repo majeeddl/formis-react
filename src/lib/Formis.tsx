@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useState } from "react";
 import rtlPlugin from "stylis-plugin-rtl";
 import { createEmotionCache, MantineProvider } from "@mantine/core";
-import { FormisModeler } from ".";
+import { FormisModeler, FormisViewer } from ".";
+import { FormisProvider } from "../store/FormisProvider";
 
 const rtlCache = createEmotionCache({
   key: "mantine-rtl",
@@ -9,10 +10,14 @@ const rtlCache = createEmotionCache({
 });
 
 type FormisPropsType = {
+  items: any[];
   rtl?: boolean;
 };
 
-const Formis: FunctionComponent<FormisPropsType> = ({ rtl = false }) => {
+const Formis: FunctionComponent<FormisPropsType> = ({
+  rtl = false,
+  items = [],
+}) => {
   const [_rtl, _setRtl] = useState(rtl);
 
   return (
@@ -22,8 +27,12 @@ const Formis: FunctionComponent<FormisPropsType> = ({ rtl = false }) => {
       theme={{ dir: _rtl ? "rtl" : "ltr" }}
       emotionCache={_rtl ? rtlCache : undefined}
     >
-
-      <FormisModeler></FormisModeler>
+      <FormisProvider items={items}>
+        <>
+          <FormisModeler></FormisModeler>
+          <FormisViewer></FormisViewer>
+        </>
+      </FormisProvider>
     </MantineProvider>
   );
 };

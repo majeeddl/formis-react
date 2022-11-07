@@ -22,7 +22,7 @@ const Item: FunctionComponent<BoxProps> = ({ name }) => {
       console.log("drop ...");
       const dropResult = monitor.getDropResult<DropResult>();
       if (item && dropResult) {
-        alert(`You dropped ${item.name} into ${dropResult.name}!`);
+        console.log(`You dropped ${item.name} into ${dropResult.name}!`);
       }
     },
     collect: (monitor) => ({

@@ -18,6 +18,11 @@ const controlsList = [
     label: "radio",
     icon: "test",
   },
+  {
+    type: "grid",
+    label: "grid",
+    icon: "test",
+  },
 ];
 
 const Controls = () => {
