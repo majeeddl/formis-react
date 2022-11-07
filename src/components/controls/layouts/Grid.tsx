@@ -8,7 +8,6 @@ type GridPropsType = {
   state?: ControlStateEnum;
   columns?: number;
   spans?: number[];
-
 };
 
 const Grid: FC<GridPropsType> = ({
@@ -19,17 +18,15 @@ const Grid: FC<GridPropsType> = ({
   return (
     <>
       <MantineGrid columns={columns}>
-        {spans.map((span) => (
-          <>
-            <Col span={span}>
-              {
-                state == ControlStateEnum.Edit && (
-                  <DropArea accept="box"></DropArea>
-                )
-              }
-            </Col>
-
-          </>
+        {spans.map((span, index) => (
+          <Col span={span} key={`s_${span}_${index}`}>
+            12
+            {
+              // state == ControlStateEnum.Edit && (
+              <DropArea accept="box"></DropArea>
+              // )
+            }
+          </Col>
         ))}
       </MantineGrid>
     </>

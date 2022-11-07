@@ -27,15 +27,13 @@ const controlsList = [
 
 const Controls = () => {
   return (
-    <>
       <Grid gutter="xs">
-        {controlsList.map((control) => (
-          <Col span={6}>
+        {controlsList.map((control:any) => (
+          <Col span={6} key={control.type}>
             <Item name={control.type}></Item>
           </Col>
         ))}
       </Grid>
-    </>
   );
 };
 
