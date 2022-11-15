@@ -17,6 +17,7 @@ const Grid: FC<GridPropsType> = ({
 }) => {
   return (
     <>
+      GRID
       <MantineGrid columns={columns}>
         {spans.map((span, index) => (
           <Col span={span} key={`s_${span}_${index}`}>
