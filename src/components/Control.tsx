@@ -18,10 +18,7 @@ export type ControlProps = {
   type: ControlTypeEnum;
 };
 
-const Control: FunctionComponent<ControlProps> = ({
-  state = ControlStateEnum.View,
-  type,
-}) => {
+const Control = ({ state = ControlStateEnum.View, type }: ControlProps) => {
   return (
     <>
       <div className="control-box">

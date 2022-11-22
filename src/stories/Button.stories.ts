@@ -4,14 +4,21 @@ import { Button } from './Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
-  title: 'Example/Button',
+  title: "Example/Button",
   component: Button,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/react/writing-docs/docs-page
-  tags: ['docsPage'],
+  tags: ["docsPage"],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    backgroundColor: { control: "color" },
   },
+  // decorators: [
+  //   (story) => (
+  //     <div style={{ margin: "3em" }}>
+  //       <story />
+  //     </div>
+  //   ),
+  // ],
 };
 
 export default meta;
