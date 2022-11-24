@@ -46,17 +46,6 @@ export const Dustbin: FC = () => {
       >
         {isActive ? "Release to drop" : "Drag a box here"}
       </div>
-      {/* <Grid columns={24}>
-        <Col ref={drop} className="mantineGridCol" span={12}>
-          12 span
-        </Col>
-        <Col className="mantineGridCol" span={6}>
-          6 span
-        </Col>
-        <Col className="mantineGridCol" span={6}>
-          6 span
-        </Col>
-      </Grid> */}
     </>
   );
 };
