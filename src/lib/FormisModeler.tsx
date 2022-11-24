@@ -2,7 +2,8 @@ import { Card, Grid } from "@mantine/core";
 import React, { FunctionComponent, useEffect } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { useAppSelector } from "../store/hooks";
+import { useItemStore } from "../store/item.store";
+import { useAppSelector } from "../store/redux/hooks";
 import { Dustbin } from "../views/dragAndDrop/Dustbin";
 import LeftPanel from "./modeler/LeftPanel";
 import RightPanel from "./modeler/RightPanel";
@@ -11,12 +12,16 @@ type FormisModelerProps = {
   onChange?: (items: any) => {};
 };
 
-const FormModeler: FunctionComponent<FormisModelerProps> = ({ onChange = ()=>{} }) => {
-  const items = useAppSelector((state) => state.items.items);
+const FormModeler: FunctionComponent<FormisModelerProps> = ({
+  onChange = () => {},
+}) => {
+  // const items = useAppSelector((state) => state.items.items);
+
+  const items = useItemStore((state:any)=> state.items)
 
   useEffect(() => {
     console.log("items : ", items);
-    onChange(items)
+    onChange(items);
   }, [items]);
 
   return (

@@ -6,12 +6,15 @@ import {
   IconSettings,
   IconListDetails,
 } from "@tabler/icons";
-import { ThemeContext } from "../../store/ThemeProvider";
+// import { ThemeContext } from "../../store/ThemeProvider";
 import Controls from "../../components/leftPanel/Controls";
 import Settings from "../../components/leftPanel/Settings";
+import { useThemeStore } from "../../store/theme.store";
 
 const LeftPanel = () => {
-  const { dir } = useContext(ThemeContext);
+  // const { dir } = useContext(ThemeContext);
+
+  const dir = useThemeStore((state: any) => state.dir);
 
   return (
     <>

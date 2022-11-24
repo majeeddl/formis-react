@@ -1,8 +1,9 @@
 import React, { CSSProperties, FunctionComponent, useContext } from "react";
 import { useDrop } from "react-dnd";
-import { FormisContext } from "../../store/FormisProvider";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { addItem } from "../../store/slices/items.slice";
+// import { FormisContext } from "../../store/context/FormisProvider";
+// import { useAppDispatch, useAppSelector } from "../../store/redux/hooks";
+import { useItemStore } from "../../store/item.store";
+// import { addItem } from "../../store/redux/slices/items.slice";
 
 const style: CSSProperties = {
   height: "1rem",
@@ -19,38 +20,38 @@ const style: CSSProperties = {
 
 export type DropAreaProps = {
   accept: string;
-  parent : any;
-  index? : number;
+  parent: any;
+  index?: number;
   onDrop?: (item: any) => void;
 };
 
 const DropArea: FunctionComponent<DropAreaProps> = ({
   accept,
   parent = null,
-  index =0,
+  index = 0,
   onDrop = () => {},
 }) => {
-
-
   // const items = useAppSelector((state) => state.items.items);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  const [{ canDrop, isOver }, drop] = useDrop(
-    () => ({
-      accept: accept,
-      // drop: (item,monitor)=>{
-      //   console.log(item)
-      //   console.log(monitor)
-      // },
-      drop: (item:any, monitor) => {
-        dispatch(addItem({ ...item, parent,index }));
-      },
-      collect: (monitor) => ({
-        isOver: monitor.isOver(),
-        canDrop: monitor.canDrop(),
-      }),
-    })
-  );
+  const addItem = useItemStore((state: any) => state.addItem);
+
+  const [{ canDrop, isOver }, drop] = useDrop(() => ({
+    accept: accept,
+    // drop: (item,monitor)=>{
+    //   console.log(item)
+    //   console.log(monitor)
+    // },
+    drop: (item: any, monitor) => {
+      // dispatch(addItem({ ...item, parent,index }));
+
+      addItem({ ...item, parent, index });
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+    }),
+  }));
 
   const isActive = canDrop && isOver;
   let backgroundColor = "whitesmoke";

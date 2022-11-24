@@ -1,7 +1,7 @@
 import { Button } from "@mantine/core";
 import React, { FunctionComponent, useContext } from "react";
 import { useDrag } from "react-dnd";
-import { FormisContext } from "../../../store/FormisProvider";
+import { FormisContext } from "../../../store/context/FormisProvider";
 
 export interface BoxProps {
   name: string;
@@ -17,23 +17,21 @@ interface DropResult {
 
 const Item: FunctionComponent<BoxProps> = ({ name }) => {
   const formisContext = useContext(FormisContext);
-  const [{ isDragging }, drag] = useDrag(
-    () => ({
-      type: "box",
-      item: { name },
-      end: (item, monitor) => {
-        console.log("drop ...");
-        // const dropResult = monitor.getDropResult<DropResult>();
-        // if (item && dropResult) {
-        //   console.log(`You dropped ${item.name} into ${dropResult.name}!`);
-        // }
-      },
-      collect: (monitor) => ({
-        isDragging: monitor.isDragging(),
-        handlerId: monitor.getHandlerId(),
-      }),
-    })
-  );
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: "box",
+    item: { name },
+    end: (item, monitor) => {
+      console.log("drop ...");
+      // const dropResult = monitor.getDropResult<DropResult>();
+      // if (item && dropResult) {
+      //   console.log(`You dropped ${item.name} into ${dropResult.name}!`);
+      // }
+    },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+      handlerId: monitor.getHandlerId(),
+    }),
+  }));
 
   return (
     <>
