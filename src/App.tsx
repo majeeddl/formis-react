@@ -1,5 +1,5 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+
+
 import "./App.css";
 
 import { Formis, FormisModeler } from "./lib/index";
@@ -39,7 +39,8 @@ function App() {
       </Navbar>
       <Container>
         <Routes>
-          <Route path="/" element={<FormisModeler></FormisModeler>}></Route>
+          <Route path="/" element={<Formis></Formis>}></Route>
+          {/* <Route path="/" element={<FormisModeler></FormisModeler>}></Route> */}
           <Route
             path="/drag-and-drop"
             element={<DragAndDrop></DragAndDrop>}
