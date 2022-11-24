@@ -8,9 +8,11 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, Route, Routes } from "react-router-dom";
 import GridView from "./views/GridView";
 
+
 function App() {
   return (
     <div className="App">
+
       {/* <FormisModeler></FormisModeler>
       <FormisViewer></FormisViewer> */}
 
@@ -46,6 +48,7 @@ function App() {
           <Route path="/grid" element={<GridView></GridView>}></Route>
         </Routes>
       </Container>
+
     </div>
   );
 }
