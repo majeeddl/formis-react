@@ -1,6 +1,6 @@
 import ButtonTest from "../../src/components/ButtonTest";
 
-describe("ComponentName.cy.ts", () => {
+describe("ButttonTest.cy.tsx", () => {
   it("playground", () => {
     cy.mount(<ButtonTest></ButtonTest>);
 

@@ -6,5 +6,10 @@
     "types": ["cypress", "node"],
     "jsx": "react-jsx"
   },
-  "include": ["../node_modules/cypress", "**/*.ts", "**/*.tsx"]
+  "include": [
+    "../node_modules/cypress",
+    "**/*.ts",
+    "**/*.tsx",
+    "../src/components/Control.cy.tsx"
+  ]
 }
