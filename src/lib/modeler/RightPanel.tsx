@@ -26,6 +26,7 @@ const RightPanel = () => {
         onDrop={dropItem}
         parent={null}
         index={0}
+        data-cy="drag-area"
       ></DropArea>
 
       {_items.map((item: any, index: number) => (

@@ -17,6 +17,6 @@
     "jsx": "react-jsx",
     "types": ["cypress"]
   },
-  "include": ["src", "cypress/component/Control.cy.tsx"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

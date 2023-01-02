@@ -30,6 +30,7 @@ const DropArea: FunctionComponent<DropAreaProps> = ({
   parent = null,
   index = 0,
   onDrop = () => {},
+  ...props
 }) => {
   // const items = useAppSelector((state) => state.items.items);
   // const dispatch = useAppDispatch();
@@ -67,6 +68,7 @@ const DropArea: FunctionComponent<DropAreaProps> = ({
         ref={drop}
         style={{ ...style, backgroundColor }}
         data-testid="dustbin"
+        {...props}
       >
         {isActive ? "Release to drop" : "Drag a box here"}
       </div>

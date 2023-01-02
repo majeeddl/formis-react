@@ -23,12 +23,17 @@ const LeftPanel = () => {
           <Tabs.List>
             <Tabs.Tab
               value="controls"
+              data-cy="controls-tab"
               className="text-xs"
               icon={<IconListDetails size={14} />}
             >
               Controls
             </Tabs.Tab>
-            <Tabs.Tab value="settings" icon={<IconSettings size={14} />}>
+            <Tabs.Tab
+              value="settings"
+              data-cy="settings-tab"
+              icon={<IconSettings size={14} />}
+            >
               Settings
             </Tabs.Tab>
           </Tabs.List>

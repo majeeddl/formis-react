@@ -1,4 +1,4 @@
-import ButtonTest from "../../src/components/ButtonTest";
+import ButtonTest from "./ButtonTest";
 
 describe("ButttonTest.cy.tsx", () => {
   it("playground", () => {

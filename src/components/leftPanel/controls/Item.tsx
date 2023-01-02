@@ -15,7 +15,7 @@ interface DropResult {
   name: string;
 }
 
-const Item: FunctionComponent<BoxProps> = ({ name }) => {
+const Item: FunctionComponent<BoxProps> = ({ name ,...props}) => {
   const formisContext = useContext(FormisContext);
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "box",
@@ -42,6 +42,7 @@ const Item: FunctionComponent<BoxProps> = ({ name }) => {
         color="dark"
         size="xs"
         data-testid={`box`}
+        {...props}
       >
         {name}
       </Button>

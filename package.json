@@ -58,6 +58,7 @@
     "zustand": "^4.1.5"
   },
   "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.2.3",
     "@babel/core": "^7.20.7",
     "@storybook/addon-essentials": "7.0.0-alpha.50",
     "@storybook/addon-interactions": "7.0.0-alpha.50",
