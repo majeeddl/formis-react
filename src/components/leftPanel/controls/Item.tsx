@@ -19,7 +19,7 @@ const Item: FunctionComponent<BoxProps> = ({ name ,...props}) => {
   const formisContext = useContext(FormisContext);
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "box",
-    item: { name },
+    item: { name,...props },
     end: (item, monitor) => {
       console.log("drop ...");
       // const dropResult = monitor.getDropResult<DropResult>();

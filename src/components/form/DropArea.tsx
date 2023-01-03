@@ -44,6 +44,7 @@ const DropArea: FunctionComponent<DropAreaProps> = ({
     //   console.log(monitor)
     // },
     drop: (item: any, monitor) => {
+      console.log(item);
       // dispatch(addItem({ ...item, parent,index }));
 
       addItem({ ...item, parent, index });

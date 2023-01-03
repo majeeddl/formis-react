@@ -31,7 +31,7 @@ const RightPanel = () => {
 
       {_items.map((item: any, index: number) => (
         <div className="mt-1" key={`${item.id}`}>
-          <Control type={ControlTypeEnum.Grid} {...item}></Control>
+          <Control type={item.type} {...item}></Control>
         </div>
       ))}
 
