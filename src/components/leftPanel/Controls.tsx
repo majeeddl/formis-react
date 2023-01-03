@@ -14,7 +14,7 @@ const controlsList = [
     icon: "test",
   },
   {
-    type: "text",
+    type: "input",
     label: "Text Input",
     icon: "test",
   },
