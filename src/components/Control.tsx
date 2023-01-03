@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
-
+import Input from "./controls/Input";
+import Divider from "./controls/layouts/Divider";
 import Grid from "./controls/layouts/Grid";
 
 export enum ControlStateEnum {
@@ -10,8 +11,9 @@ export enum ControlStateEnum {
 
 export enum ControlTypeEnum {
   Grid = "grid",
+  Divider = "divider",
   Label = "label",
-  Text = "text",
+  Input = "input",
 }
 
 export type ControlProps = {
@@ -23,7 +25,9 @@ const Control = ({ state = ControlStateEnum.View, type }: ControlProps) => {
   return (
     <>
       <div className="control-box">
-        <Grid state={state}></Grid>
+        {type == ControlTypeEnum.Grid && <Grid></Grid>}
+        {type == ControlTypeEnum.Divider && <Divider></Divider>}
+        {type == ControlTypeEnum.Input && <Input></Input>}
       </div>
     </>
   );
