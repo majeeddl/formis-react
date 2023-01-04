@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Grid,Divider } from "@mantine/core";
 import Item from "./controls/Item";
+import { ControlTypeEnum } from "../Control";
 
 const controlsList = [
   {
@@ -9,17 +10,17 @@ const controlsList = [
     icon: "test",
   },
   {
-    type: "label",
+    type: ControlTypeEnum.Label,
     label: "Label",
     icon: "test",
   },
   {
-    type: "input",
+    type: ControlTypeEnum.Input,
     label: "Text Input",
     icon: "test",
   },
   {
-    type: "",
+    type: ControlTypeEnum.TextArea,
     label: "Text Area",
     icon: "test",
   },
@@ -29,22 +30,27 @@ const controlsList = [
     icon: "test",
   },
   {
-    type: "radio",
+    type: ControlTypeEnum.Radio,
     label: "Radio",
     icon: "test",
   },
   {
-    type: "checkbox",
+    type: ControlTypeEnum.Checkbox,
     label: "Checkbox",
     icon: "test",
   },
   {
-    type: "select",
+    type: ControlTypeEnum.Switch,
+    label: "Switch",
+    icon: "test",
+  },
+  {
+    type: ControlTypeEnum.Select,
     label: "Select",
     icon: "test",
   },
   {
-    type: "multiSelect",
+    type: ControlTypeEnum.MultiSelect,
     label: "Multi Select",
     icon: "test",
   },

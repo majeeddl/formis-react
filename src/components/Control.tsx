@@ -20,7 +20,9 @@ export enum ControlTypeEnum {
   TextArea = "textarea",
   Radio = "radio",
   Checkbox = "checkbox",
-  Switch = "switch"
+  Switch = "switch",
+  Select = "select",
+  MultiSelect = "multiSelect"
 }
 
 export type ControlProps = {
