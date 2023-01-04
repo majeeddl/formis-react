@@ -1,7 +1,10 @@
+import { Switch } from "@mantine/core";
+import { Checkbox } from "antd";
 import React, { FunctionComponent } from "react";
 import Input from "./controls/Input";
 import Divider from "./controls/layouts/Divider";
 import Grid from "./controls/layouts/Grid";
+import Radio from "./controls/Radio";
 
 export enum ControlStateEnum {
   View = "view",
@@ -14,6 +17,10 @@ export enum ControlTypeEnum {
   Divider = "divider",
   Label = "label",
   Input = "input",
+  TextArea = "textarea",
+  Radio = "radio",
+  Checkbox = "checkbox",
+  Switch = "switch"
 }
 
 export type ControlProps = {
@@ -21,13 +28,18 @@ export type ControlProps = {
   type: ControlTypeEnum;
 };
 
-const Control = ({ state = ControlStateEnum.View, type }: ControlProps) => {
+const Control = ({ state = ControlStateEnum.View, type , ...props }: ControlProps) => {
   return (
     <>
       <div className="control-box">
-        {type == ControlTypeEnum.Grid && <Grid></Grid>}
-        {type == ControlTypeEnum.Divider && <Divider></Divider>}
-        {type == ControlTypeEnum.Input && <Input></Input>}
+        {type == ControlTypeEnum.Grid && <Grid {...props}></Grid>}
+        {type == ControlTypeEnum.Divider && <Divider {...props}></Divider>}
+        {type == ControlTypeEnum.Input && <Input {...props}></Input>}
+        {type == ControlTypeEnum.TextArea && <Input {...props}></Input>}
+        {type == ControlTypeEnum.Radio && <Radio {...props}></Radio>}
+        {type == ControlTypeEnum.Checkbox && <Checkbox {...props}></Checkbox>}
+        {type == ControlTypeEnum.Switch && <Switch {...props}></Switch>}
+        {/* {type == ControlTypeEnum.Input && <Input></Input>} */}
       </div>
     </>
   );
