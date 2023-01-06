@@ -12,7 +12,7 @@ const Radio = ({
   ...props
 }) => {
 
-  const [radioValue, setRadioValue] = useState(value)
+  // const [radioValue, setRadioValue] = useState(value)
 
   const customAttr: any = {};
 
@@ -26,8 +26,8 @@ const Radio = ({
         name=""
         label={label}
         description={description}
-        value={radioValue}
-        onChange={setRadioValue}
+        value={value}
+        onChange={onChange}
         {...customAttr}
       >
         {values.map(({ label: _label, value: _value }, index) => (
