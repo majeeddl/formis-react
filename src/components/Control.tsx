@@ -1,10 +1,10 @@
-import { Switch } from "@mantine/core";
-import { Checkbox } from "antd";
+import { Switch } from "@mantine/core";;
 import React, { FunctionComponent } from "react";
 import Input from "./controls/Input";
 import Divider from "./controls/layouts/Divider";
 import Grid from "./controls/layouts/Grid";
 import Radio from "./controls/Radio";
+import Checkbox from "./controls/Checkbox";
 
 export enum ControlStateEnum {
   View = "view",
