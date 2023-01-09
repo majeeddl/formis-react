@@ -25,7 +25,7 @@ const controlsList = [
     icon: "test",
   },
   {
-    type: "number",
+    type: ControlTypeEnum.NumberInput,
     label: "Number Input",
     icon: "test",
   },
