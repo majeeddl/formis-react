@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch as SwitchMantine } from "@mantine/core";
 const Switch = ({
-  checked,
+  // checked,
   label = "",
-  size = "sm",
+  size = "md",
   color = null, //color={theme.colorScheme === 'dark' ? 'gray' : 'dark'}
   error = "",
   onChange = () => {},
@@ -12,9 +12,10 @@ const Switch = ({
     <>
       <SwitchMantine
         label={label}
+        //@ts-ignore
         size={size}
         onChange={onChange}
-        checked={checked}
+        // checked={checked}
         error={error}
       ></SwitchMantine>
     </>
