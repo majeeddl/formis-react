@@ -1,19 +1,24 @@
 import React from "react";
 import { Checkbox as CheckboxMantine } from "@mantine/core";
+import { v4 } from "uuid";
 
 const Checkbox = ({
-  label = "Select your favorite framework/library",
-  description = "This is anonymous",
+  label = "check box",
+  description = "",
   // defaultValue = [],
   required = false,
   value = [],
-  values = [{ label: "text", value: "value" }],
-  onChange = () => {},
+  values = [
+    { label: "item 1", value: "1" },
+    { label: "item 2", value: "2" },
+  ],
+  onChange = (e) => {
+    console.log(e);
+  },
 }) => {
-
   //  const [chekcboxValue, setChekcboxValue] = useState(value);
 
-  const customAttr: any = {};
+  const customAttr = {};
 
   if (required) {
     customAttr["withAsterisk"] = true;
@@ -25,13 +30,13 @@ const Checkbox = ({
         // defaultValue={defaultValue}
         label={label}
         description={description}
-        value={value}
-        onChange={onchange}
+        // value={value}
+        onChange={onChange}
         {...customAttr}
       >
-        {values.map(({ label: _label, value: _value }: any, index) => {
-          <CheckboxMantine key={`${index}`} value={_value} label={_label} />;
-        })}
+        {values.map(({ label: _label, value: _value }, index) => (
+          <CheckboxMantine key={`${v4()}`} value={_value} label={_label} />
+        ))}
       </CheckboxMantine.Group>
     </>
   );
