@@ -8,7 +8,7 @@ const Checkbox = ({
   // defaultValue = [],
   required = false,
   value = [],
-  values = [
+  data = [
     { label: "item 1", value: "1" },
     { label: "item 2", value: "2" },
   ],
@@ -18,7 +18,7 @@ const Checkbox = ({
 }) => {
   //  const [chekcboxValue, setChekcboxValue] = useState(value);
 
-  const customAttr = {};
+  const customAttr:any = {};
 
   if (required) {
     customAttr["withAsterisk"] = true;
@@ -34,7 +34,7 @@ const Checkbox = ({
         onChange={onChange}
         {...customAttr}
       >
-        {values.map(({ label: _label, value: _value }, index) => (
+        {data.map(({ label: _label, value: _value }, index) => (
           <CheckboxMantine key={`${v4()}`} value={_value} label={_label} />
         ))}
       </CheckboxMantine.Group>

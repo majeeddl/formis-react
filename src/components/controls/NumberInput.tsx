@@ -5,8 +5,9 @@ const NumberInput = ({
   description = "",
   placeholder = "",
   required = false,
-  value =null,
-  onChange = (e) => {
+  value = null,
+  error = "",
+  onChange = (e:any) => {
     console.log(e);
   },
 }) => {
@@ -26,6 +27,7 @@ const NumberInput = ({
         placeholder={placeholder}
         // value={value}
         onChange={onChange}
+        error={error}
         {...customAttr}
       ></NumberInputMantine>
     </>
