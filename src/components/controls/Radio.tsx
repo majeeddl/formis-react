@@ -6,7 +6,7 @@ const Radio = ({
   label = "",
   description = "",
   required = false,
-  values = [],
+  data = [],
   value = null,
   onChange = ()=>{},
   ...props
@@ -30,7 +30,7 @@ const Radio = ({
         onChange={onChange}
         {...customAttr}
       >
-        {values.map(({ label: _label, value: _value }, index) => (
+        {data.map(({ label: _label, value: _value }, index) => (
           <RadioMantine key={v4()} value={_value} label={_value} />
         ))}
       </RadioMantine.Group>

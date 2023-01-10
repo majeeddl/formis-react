@@ -7,7 +7,7 @@ const NumberInput = ({
   required = false,
   value = null,
   error = "",
-  onChange = (e) => {
+  onChange = (e:any) => {
     console.log(e);
   },
 }) => {

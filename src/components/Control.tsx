@@ -6,6 +6,7 @@ import Grid from "./controls/layouts/Grid";
 import Radio from "./controls/Radio";
 import Checkbox from "./controls/Checkbox";
 import NumberInput from "./controls/NumberInput";
+import Select from "./controls/Select";
 
 export enum ControlStateEnum {
   View = "view",
@@ -50,7 +51,7 @@ const Control = ({
         {type == ControlTypeEnum.Radio && <Radio {...props}></Radio>}
         {type == ControlTypeEnum.Checkbox && <Checkbox {...props}></Checkbox>}
         {type == ControlTypeEnum.Switch && <Switch {...props}></Switch>}
-        {/* {type == ControlTypeEnum.Input && <Input></Input>} */}
+        {type == ControlTypeEnum.Select && <Select {...props}></Select>}
       </div>
     </>
   );
