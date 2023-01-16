@@ -1,15 +1,13 @@
 import { Tabs } from "@mantine/core";
-import React, { useContext } from "react";
 import {
-  IconPhoto,
-  IconMessageCircle,
   IconSettings,
   IconListDetails,
 } from "@tabler/icons";
 // import { ThemeContext } from "../../store/ThemeProvider";
-import Controls from "../../components/leftPanel/Controls";
-import Settings from "../../components/leftPanel/Settings";
+
 import { useThemeStore } from "../../store/theme.store";
+import Controls from "./leftPanel/Controls";
+import Settings from "./leftPanel/Settings";
 
 const LeftPanel = () => {
   // const { dir } = useContext(ThemeContext);

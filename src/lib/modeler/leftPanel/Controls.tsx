@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Grid, Divider } from "@mantine/core";
 import Item from "./controls/Item";
-import { FormItemTypeEnum } from "../form/FormItem";
+import { FormItemTypeEnum } from "../../../components/form/FormItem";
 
 const controlsList = [
   {
