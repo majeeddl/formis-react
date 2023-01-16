@@ -8,6 +8,7 @@ const Textarea = ({
   icon = <></>,
   disabled = false,
   invalid = false,
+  required = false,
   error = "",
   ...props
 }) => {
@@ -17,7 +18,7 @@ const Textarea = ({
         label={label}
         description={description}
         error={error}
-        withAsterisk
+        withAsterisk={required}
         icon={icon}
         placeholder={placeholder}
         disabled={disabled}
