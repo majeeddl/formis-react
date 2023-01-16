@@ -9,11 +9,14 @@ import LeftPanel from "./modeler/LeftPanel";
 import RightPanel from "./modeler/RightPanel";
 
 type FormisModelerProps = {
+  items?: any;
   onChange?: (items: any) => {};
+  onSave?: (items: any) => {};
 };
 
 const FormModeler: FunctionComponent<FormisModelerProps> = ({
   onChange = () => {},
+  onSave = ()=>{}
 }) => {
   // const items = useAppSelector((state) => state.items.items);
 
