@@ -17,13 +17,6 @@ const Select = ({
   icon = {},
   ...props
 }) => {
-  // const [SelectValue, setSelectValue] = useState(value)
-
-  const customAttr: any = {};
-
-  if (required) {
-    customAttr["withAsterisk"] = true;
-  }
 
   return (
     <>
@@ -31,10 +24,10 @@ const Select = ({
         name=""
         label={label}
         description={description}
+        withAsterisk={required}
         // value={value}
         data={data}
         onChange={onChange}
-        {...customAttr}
         {...props}
       />
     </>

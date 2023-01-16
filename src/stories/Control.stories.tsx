@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-
-import Control from "../components/Control";
+import Control from "../components/form/FormItem";
 
 const meta: Meta<typeof Control> = {
   title: "Components/Control",

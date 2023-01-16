@@ -1,17 +1,18 @@
 import React, { FC } from "react";
 import { Grid as MantineGrid } from "@mantine/core";
 import Col from "./grid/Col";
-import { ControlStateEnum } from "../../Control";
-import DropArea from "../../form/DropArea";
+import { FormItemStateEnum } from "../../FormItem";
+import DropArea from "../../DropArea";
+
 
 type GridPropsType = {
-  state?: ControlStateEnum;
+  state?: FormItemStateEnum;
   columns?: number;
   spans?: number[];
 };
 
 const Grid: FC<GridPropsType> = ({
-  state = ControlStateEnum.View,
+  state = FormItemStateEnum.View,
   columns = 24,
   spans = [12, 12],
 }) => {
@@ -21,9 +22,8 @@ const Grid: FC<GridPropsType> = ({
       <MantineGrid columns={columns}>
         {spans.map((span, index) => (
           <Col span={span} key={`s_${span}_${index}`}>
-            
             {
-              // state == ControlStateEnum.Edit && (
+              // state == FormItemStateEnum.Edit && (
               <DropArea accept="box" index={index} parent={null}></DropArea>
               // )
             }
