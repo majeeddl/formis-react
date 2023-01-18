@@ -60,13 +60,18 @@ const controlsList = [
     icon: "test",
   },
   {
-    type: "grid",
+    type: FormItemTypeEnum.Grid,
     label: "Grid",
     icon: "test",
   },
   {
-    type: "divider",
+    type: FormItemTypeEnum.Divider,
     label: "Divider",
+    icon: "test",
+  },
+  {
+    type: FormItemTypeEnum.Button,
+    label: "Button",
     icon: "test",
   },
 ];

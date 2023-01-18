@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import { Provider } from "react-redux";
 import rtlPlugin from "stylis-plugin-rtl";
-import { createEmotionCache, MantineProvider } from "@mantine/core";
+import { Button, createEmotionCache, MantineProvider } from "@mantine/core";
 import { FormisModeler, FormisViewer } from ".";
 import { FormisProvider } from "../store/context/FormisProvider";
 import { store } from "../store/redux/store";
@@ -34,6 +34,7 @@ const Formis: FunctionComponent<FormisPropsType> = ({
     >
       {/* <FormisProvider items={items}> */}
       <>
+        <Button>test</Button>
         <FormisModeler></FormisModeler>
         <FormisViewer></FormisViewer>
       </>

@@ -37,9 +37,9 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
-    "@mantine/core": "^5.10.0",
-    "@mantine/form": "^5.10.0",
-    "@mantine/hooks": "^5.10.0",
+    "@mantine/core": "^5.10.1",
+    "@mantine/form": "^5.10.1",
+    "@mantine/hooks": "^5.10.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@tabler/icons": "^1.119.0",
     "@types/uuid": "^9.0.0",

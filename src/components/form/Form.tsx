@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import DropArea from "./DropArea";
 import FormItem from "./FormItem";
 
-const Form = ({items} :any) => {
+const Form = ({ items }: any) => {
   // const [items, setItems] = useState([]);
 
   // const _items = useAppSelector((state) => state.items.items);
- 
 
   const dropItem = (item: any) => {
     console.log("drop item in right panel");
@@ -28,7 +27,7 @@ const Form = ({items} :any) => {
         </div>
       ))}
 
-      <button onClick={() => console.log(_items)}>button</button>
+      {/* <button onClick={() => console.log(items)}>button</button> */}
     </>
   );
 };
