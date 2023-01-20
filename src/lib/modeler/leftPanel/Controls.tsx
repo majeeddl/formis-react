@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Col, Grid, Divider } from "@mantine/core";
 import Item from "./controls/Item";
 import { FormItemTypeEnum } from "../../../components/form/FormItem";
@@ -52,7 +52,12 @@ const controlsList = [
   {
     type: FormItemTypeEnum.MultiSelect,
     label: "Multi Select",
-    icon: "test",
+    // icon: "test",
+  },
+  {
+    type: FormItemTypeEnum.Button,
+    label: "Button",
+    // icon: "test",
   },
   {
     type: "_divider",
@@ -67,11 +72,6 @@ const controlsList = [
   {
     type: FormItemTypeEnum.Divider,
     label: "Divider",
-    icon: "test",
-  },
-  {
-    type: FormItemTypeEnum.Button,
-    label: "Button",
     icon: "test",
   },
 ];
