@@ -14,6 +14,7 @@ const Input = ({
 }) => {
   return (
     <>
+      {icon}
       {/* <InputMantine icon={icon} placeholder={placeholder} disabled invalid /> */}
       <InputMantine.Wrapper
         withAsterisk={required}

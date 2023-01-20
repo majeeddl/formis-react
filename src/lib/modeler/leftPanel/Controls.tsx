@@ -7,47 +7,47 @@ const controlsList = [
   {
     type: "_divider",
     label: "Elements",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.Label,
     label: "Label",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.Input,
     label: "Text Input",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.Textarea,
     label: "Text Area",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.NumberInput,
     label: "Number Input",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.Radio,
     label: "Radio",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.Checkbox,
     label: "Checkbox",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.Switch,
     label: "Switch",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.Select,
     label: "Select",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.MultiSelect,
@@ -62,17 +62,17 @@ const controlsList = [
   {
     type: "_divider",
     label: "Layout",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.Grid,
     label: "Grid",
-    icon: "test",
+    // icon: "test",
   },
   {
     type: FormItemTypeEnum.Divider,
     label: "Divider",
-    icon: "test",
+    // icon: "test",
   },
 ];
 

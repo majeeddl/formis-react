@@ -5,7 +5,7 @@ const Textarea = ({
   label = "Textarea",
   description = "",
   placeholder = "",
-  icon = <></>,
+  icon = false,
   disabled = false,
   invalid = false,
   required = false,
@@ -19,13 +19,11 @@ const Textarea = ({
         description={description}
         error={error}
         withAsterisk={required}
-        icon={icon}
         placeholder={placeholder}
         disabled={disabled}
         autosize
+        {...(icon ? { icon } : {})}
         {...props}
-        // minRows={2}
-        // maxRows={4}
       />
     </>
   );
