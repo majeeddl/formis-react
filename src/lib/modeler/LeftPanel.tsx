@@ -1,8 +1,5 @@
 import { Tabs } from "@mantine/core";
-import {
-  IconSettings,
-  IconListDetails,
-} from "@tabler/icons";
+import { IconSettings, IconListDetails } from "@tabler/icons-react";
 // import { ThemeContext } from "../../store/ThemeProvider";
 
 import { useThemeStore } from "../../store/theme.store";
