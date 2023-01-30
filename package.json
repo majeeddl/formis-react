@@ -40,7 +40,6 @@
     "@mantine/core": "^5.10.2",
     "@mantine/form": "^5.10.2",
     "@mantine/hooks": "^5.10.2",
-    "@reduxjs/toolkit": "^1.9.1",
     "@tabler/icons-react": "^2.1.2",
     "@types/uuid": "^9.0.0",
     "antd": "^5.1.6",
