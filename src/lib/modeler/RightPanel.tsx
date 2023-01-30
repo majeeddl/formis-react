@@ -1,6 +1,6 @@
 
 import { useItemStore } from "../../store/item.store";
-import Form from "../../components/form/Form";
+import Form, { FormModeEnums } from "../../components/form/Form";
 
 const RightPanel = () => {
   // useEffect(() => {
@@ -11,7 +11,7 @@ const RightPanel = () => {
 
   return (
     <>
-      <Form items={_items}></Form>
+      <Form mode={FormModeEnums.edit} items={_items}></Form>
     </>
   );
 };

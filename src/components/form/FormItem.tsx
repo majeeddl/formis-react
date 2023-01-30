@@ -50,7 +50,7 @@ const FormItem = ({
 }: FormItemProps) => {
   return (
     <>
-      <div className="form-item-box">
+      <div className={`form-item-box `}>
         {type == FormItemTypeEnum.Grid && <Grid {...props}></Grid>}
         {type == FormItemTypeEnum.Divider && <Divider {...props}></Divider>}
         {type == FormItemTypeEnum.Input && <Input {...props}></Input>}

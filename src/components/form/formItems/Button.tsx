@@ -12,13 +12,13 @@ export enum ButtonVariantEnum {
 }
 
 export type ButtonProps = {
-  label?:string;
-  variant: ButtonVariantEnum;
-  disabled: boolean;
-  size: MantineSize;
-  loading: boolean;
-  compact: boolean;
-  children?:any
+  label?: string;
+  variant?: ButtonVariantEnum;
+  disabled?: boolean;
+  size?: MantineSize;
+  loading?: boolean;
+  compact?: boolean;
+  children?: any;
 };
 
 function Button({
@@ -34,7 +34,8 @@ function Button({
   return (
     <>
       <MantineButton size={size} compact={compact} loading={loading} {...props}>
-        {label}{children}
+        {label}
+        {children}
       </MantineButton>
     </>
   );
