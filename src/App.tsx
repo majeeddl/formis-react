@@ -7,12 +7,12 @@ import DragAndDrop from "./views/DragAndDrop";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, Route, Routes } from "react-router-dom";
 import GridView from "./views/GridView";
+import MantineForm from "./views/MantineForm";
 
 
 function App() {
   return (
     <div className="App">
-
       {/* <FormisModeler></FormisModeler>
       <FormisViewer></FormisViewer> */}
 
@@ -33,6 +33,9 @@ function App() {
               <Nav.Link to="/grid" as={Link}>
                 Grid
               </Nav.Link>
+              <Nav.Link to="/mantineform" as={Link}>
+                Mantine Form
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -46,9 +49,9 @@ function App() {
             element={<DragAndDrop></DragAndDrop>}
           ></Route>
           <Route path="/grid" element={<GridView></GridView>}></Route>
+          <Route path="/mantineform" element={<MantineForm></MantineForm>}></Route>
         </Routes>
       </Container>
-
     </div>
   );
 }
