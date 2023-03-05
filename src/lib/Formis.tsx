@@ -1,10 +1,8 @@
 import React, { FunctionComponent, useState } from "react";
-import { Provider } from "react-redux";
 import rtlPlugin from "stylis-plugin-rtl";
-import { createEmotionCache, MantineProvider } from "@mantine/core";
+import {  createEmotionCache, MantineProvider } from "@mantine/core";
 import { FormisModeler, FormisViewer } from ".";
-import { FormisProvider } from "../store/context/FormisProvider";
-import { store } from "../store/redux/store";
+
 
 import "../assets/main.scss";
 

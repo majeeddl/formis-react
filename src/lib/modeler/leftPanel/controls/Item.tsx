@@ -1,7 +1,6 @@
 import { Button } from "@mantine/core";
 import React, { FunctionComponent, useContext } from "react";
 import { useDrag } from "react-dnd";
-import { FormisContext } from "../../../store/context/FormisProvider";
 
 export interface BoxProps {
   name: string;
@@ -15,11 +14,10 @@ interface DropResult {
   name: string;
 }
 
-const Item: FunctionComponent<BoxProps> = ({ name ,...props}) => {
-  const formisContext = useContext(FormisContext);
+const Item: FunctionComponent<BoxProps> = ({ name, ...props }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "box",
-    item: { name,...props },
+    item: { name, ...props },
     end: (item, monitor) => {
       console.log("drop ...");
       // const dropResult = monitor.getDropResult<DropResult>();

@@ -1,82 +1,86 @@
-import React from "react";
-import { Col, Grid,Divider } from "@mantine/core";
+import React, { Component } from "react";
+import { Col, Grid, Divider } from "@mantine/core";
 import Item from "./controls/Item";
-import { ControlTypeEnum } from "../Control";
+import { FormItemTypeEnum } from "../../../components/form/FormItem";
 
 const controlsList = [
   {
     type: "_divider",
     label: "Elements",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: ControlTypeEnum.Label,
+    type: FormItemTypeEnum.Label,
     label: "Label",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: ControlTypeEnum.Input,
+    type: FormItemTypeEnum.Input,
     label: "Text Input",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: ControlTypeEnum.TextArea,
+    type: FormItemTypeEnum.Textarea,
     label: "Text Area",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: ControlTypeEnum.NumberInput,
+    type: FormItemTypeEnum.NumberInput,
     label: "Number Input",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: ControlTypeEnum.Radio,
+    type: FormItemTypeEnum.Radio,
     label: "Radio",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: ControlTypeEnum.Checkbox,
+    type: FormItemTypeEnum.Checkbox,
     label: "Checkbox",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: ControlTypeEnum.Switch,
+    type: FormItemTypeEnum.Switch,
     label: "Switch",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: ControlTypeEnum.Select,
+    type: FormItemTypeEnum.Select,
     label: "Select",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: ControlTypeEnum.MultiSelect,
+    type: FormItemTypeEnum.MultiSelect,
     label: "Multi Select",
-    icon: "test",
+    // icon: "test",
+  },
+  {
+    type: FormItemTypeEnum.Button,
+    label: "Button",
+    // icon: "test",
   },
   {
     type: "_divider",
     label: "Layout",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: "grid",
+    type: FormItemTypeEnum.Grid,
     label: "Grid",
-    icon: "test",
+    // icon: "test",
   },
   {
-    type: "divider",
+    type: FormItemTypeEnum.Divider,
     label: "Divider",
-    icon: "test",
+    // icon: "test",
   },
 ];
 
 const Controls = () => {
   return (
     <Grid gutter="xs">
-      {controlsList.map((control,index) => {
-
-        if(control.type == '_divider'){
+      {controlsList.map((control, index) => {
+        if (control.type == "_divider") {
           return (
             <Col span={12} key={`${control.type}_${index}`}>
               <Divider my="xs" label={control.label} />

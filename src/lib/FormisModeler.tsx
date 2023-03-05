@@ -1,4 +1,4 @@
-import { Card, Grid } from "@mantine/core";
+import { Card, Grid, Loader, LoadingOverlay } from "@mantine/core";
 import React, { FunctionComponent, useEffect } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -9,15 +9,18 @@ import LeftPanel from "./modeler/LeftPanel";
 import RightPanel from "./modeler/RightPanel";
 
 type FormisModelerProps = {
+  items?: any;
   onChange?: (items: any) => {};
+  onSave?: (items: any) => {};
 };
 
 const FormModeler: FunctionComponent<FormisModelerProps> = ({
   onChange = () => {},
+  onSave = () => {},
 }) => {
   // const items = useAppSelector((state) => state.items.items);
 
-  const items = useItemStore((state:any)=> state.items)
+  const items = useItemStore((state: any) => state.items);
 
   useEffect(() => {
     console.log("items : ", items);
@@ -32,7 +35,11 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
           <Grid.Col span={8} className="border-gray-500 border border-solid">
             <LeftPanel></LeftPanel>
           </Grid.Col>
-          <Grid.Col span={16} className="border-gray-500 border border-solid">
+          <Grid.Col
+            span={16}
+            className="border-gray-500 border border-solid relative"
+          >
+            <LoadingOverlay visible={false} overlayBlur={2} />
             <RightPanel></RightPanel>
           </Grid.Col>
         </Grid>
