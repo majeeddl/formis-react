@@ -14,14 +14,14 @@ const rtlCache = createEmotionCache({
 });
 
 type FormisPropsType = {
-  items: any[];
+  items?: any[];
   rtl?: boolean;
 };
 
-const Formis: FunctionComponent<FormisPropsType> = ({
+const Formis: FunctionComponent = ({
   rtl = false,
   items = [],
-}) => {
+}: FormisPropsType) => {
   const [_rtl, _setRtl] = useState(rtl);
 
   return (
