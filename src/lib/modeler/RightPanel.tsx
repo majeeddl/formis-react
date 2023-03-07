@@ -7,7 +7,7 @@ const RightPanel = () => {
   //   console.log("items changes for right panel");
   //   console.log(items);
   // }, [items]);
-  const _items = useItemStore((state) => state.items);
+  const _items = useItemStore((state:any) => state.items);
 
   return (
     <>
