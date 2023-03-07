@@ -2,21 +2,22 @@ import { Button } from "@mantine/core";
 import React, { FunctionComponent, useContext } from "react";
 import { useDrag } from "react-dnd";
 
-export interface BoxProps {
-  name: string;
-}
 
-export const ItemTypes = {
-  BOX: "box",
+export enum ItemDragTargetTypeEnums {
+  Wrapper = "wrapper",
+  Item = "item",
 };
 
 interface DropResult {
   name: string;
 }
 
-const Item: FunctionComponent<BoxProps> = ({ name, ...props }) => {
+const Item = ({ dragTargetType = ItemDragTargetTypeEnums.Item  ,name,  ...props } : {
+  dragTargetType ?: ItemDragTargetTypeEnums;
+  name: string;
+}) => {
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: "box",
+    type: dragTargetType,
     item: { name, ...props },
     end: (item, monitor) => {
       console.log("drop ...");

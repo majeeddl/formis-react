@@ -1,5 +1,6 @@
 import { FormItemProps } from "antd";
 import React, { useState } from "react";
+import { ItemDragTargetTypeEnums } from "../../lib/modeler/leftPanel/controls/Item";
 import DropArea from "./DropArea";
 import FormItem from "./FormItem";
 
@@ -26,7 +27,7 @@ const Form = ({ mode = FormModeEnums.view, items = [] }: FormProps) => {
     <>
       {mode == FormModeEnums.edit && (
         <DropArea
-          accept="box"
+          accept={ItemDragTargetTypeEnums.Wrapper}
           onDrop={dropItem}
           parent={null}
           index={0}
