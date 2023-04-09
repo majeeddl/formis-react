@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from "path";
 import dts from "vite-plugin-dts";
+import VitePluginStyleInject from "vite-plugin-style-inject";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
     }),
+    VitePluginStyleInject(),
   ],
   build: {
     lib: {

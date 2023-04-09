@@ -6,14 +6,14 @@ import { useItemStore } from "../../store/item.store";
 // import { addItem } from "../../store/redux/slices/items.slice";
 
 const style: CSSProperties = {
-  height: "1rem",
+  minHeight: "0.5rem",
   width: "100%",
   // marginRight: "1.5rem",
   // marginBottom: "1.5rem",
   color: "silver",
-  padding: "1rem",
+  padding: "0.5rem",
   textAlign: "center",
-  fontSize: "1rem",
+  fontSize: "0.5rem",
   lineHeight: "middle",
   border: "1px silver dashed",
 };
@@ -23,6 +23,7 @@ export type DropAreaProps = {
   parent: any;
   index?: number;
   onDrop?: (item: any) => void;
+  children?: any;
 };
 
 const DropArea: FunctionComponent<DropAreaProps> = ({
@@ -30,6 +31,7 @@ const DropArea: FunctionComponent<DropAreaProps> = ({
   parent = null,
   index = 0,
   onDrop = () => {},
+  children = null,
   ...props
 }) => {
   // const items = useAppSelector((state) => state.items.items);
@@ -44,6 +46,7 @@ const DropArea: FunctionComponent<DropAreaProps> = ({
     //   console.log(monitor)
     // },
     drop: (item: any, monitor) => {
+      console.log(monitor);
       console.log(item);
       // dispatch(addItem({ ...item, parent,index }));
 
@@ -72,6 +75,7 @@ const DropArea: FunctionComponent<DropAreaProps> = ({
         {...props}
       >
         {isActive ? "Release to drop" : "Drag a box here"}
+        {children}
       </div>
     </>
   );

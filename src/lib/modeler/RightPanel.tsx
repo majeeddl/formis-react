@@ -1,17 +1,17 @@
 
 import { useItemStore } from "../../store/item.store";
-import Form from "../../components/form/Form";
+import Form, { FormModeEnums } from "../../components/form/Form";
 
 const RightPanel = () => {
   // useEffect(() => {
   //   console.log("items changes for right panel");
   //   console.log(items);
   // }, [items]);
-  const _items = useItemStore((state) => state.items);
+  const _items = useItemStore((state:any) => state.items.filter((item:any)=>item.parent==null));
 
   return (
     <>
-      <Form items={_items}></Form>
+      <Form mode={FormModeEnums.edit} items={_items}></Form>
     </>
   );
 };

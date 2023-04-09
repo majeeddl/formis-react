@@ -13,6 +13,7 @@ type FormisModelerProps = {
   onChange?: (items: any) => {};
   onSave?: (items: any) => {};
 };
+// show me an example of forwarfRef with type annotation in typescript react
 
 const FormModeler: FunctionComponent<FormisModelerProps> = ({
   onChange = () => {},

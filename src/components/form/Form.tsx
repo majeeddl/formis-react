@@ -1,8 +1,20 @@
+import { FormItemProps } from "antd";
 import React, { useState } from "react";
+import { ItemDragTargetTypeEnums } from "../../lib/modeler/leftPanel/controls/Item";
 import DropArea from "./DropArea";
 import FormItem from "./FormItem";
 
-const Form = ({ items }: any) => {
+export enum FormModeEnums {
+  view = "view",
+  edit = "edit",
+}
+
+export type FormProps = {
+  mode?: FormModeEnums;
+  items?: FormItemProps[];
+};
+
+const Form = ({ mode = FormModeEnums.view, items = [] }: FormProps) => {
   // const [items, setItems] = useState([]);
 
   // const _items = useAppSelector((state) => state.items.items);
@@ -13,17 +25,18 @@ const Form = ({ items }: any) => {
 
   return (
     <>
-      <DropArea
-        accept="box"
-        onDrop={dropItem}
-        parent={null}
-        index={0}
-        data-cy="drag-area"
-      ></DropArea>
-
+      {mode == FormModeEnums.edit && (
+        <DropArea
+          accept={ItemDragTargetTypeEnums.Wrapper}
+          onDrop={dropItem}
+          parent={null}
+          index={0}
+          data-cy="drag-area"
+        ></DropArea>
+      )}
       {items.map((item: any, index: number) => (
         <div className="mt-1" key={`${item.id}`}>
-          <FormItem type={item.type} {...item}></FormItem>
+          <FormItem type={item.type} {...item} mode={mode}></FormItem>
         </div>
       ))}
 

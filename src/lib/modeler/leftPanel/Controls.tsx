@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Grid, Divider } from "@mantine/core";
-import Item from "./controls/Item";
+import Item, { ItemDragTargetTypeEnums } from "./controls/Item";
 import { FormItemTypeEnum } from "../../../components/form/FormItem";
 
 const controlsList = [
@@ -67,11 +67,12 @@ const controlsList = [
   {
     type: FormItemTypeEnum.Grid,
     label: "Grid",
-    // icon: "test",
+    dragTargetType : ItemDragTargetTypeEnums.Wrapper,
   },
   {
     type: FormItemTypeEnum.Divider,
     label: "Divider",
+    
     // icon: "test",
   },
 ];

@@ -7,12 +7,12 @@ const Checkbox = ({
   description = "",
   // defaultValue = [],
   required = false,
-  value = [],
+    value = [],
   data = [
     { label: "item 1", value: "1" },
     { label: "item 2", value: "2" },
   ],
-  onChange = (e) => {
+  onChange = (e:any) => {
     console.log(e);
   },
 }) => {
