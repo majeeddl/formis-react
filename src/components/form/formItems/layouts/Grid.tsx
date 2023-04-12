@@ -3,7 +3,7 @@ import { Grid as MantineGrid } from "@mantine/core";
 import Col from "./grid/Col";
 import FormItem, { FormItemStateEnum, FormItemTypeEnum } from "../../FormItem";
 import DropArea from "../../DropArea";
-import { ItemDragTargetTypeEnums } from "../../../../lib/modeler/leftPanel/controls/Item";
+import { ItemDragTargetTypeEnums } from "../../../../lib/modeler/toolbox/controls/Item.control";
 import { useItemStore } from "../../../../store/item.store";
 import { ConditionalWrapper } from "../../../utils/ConditionalWrapper";
 
@@ -20,7 +20,6 @@ const Grid: FC<GridPropsType> = ({
   columns = 24,
   spans = [12, 12],
 }) => {
-  
   const items = useItemStore((state: any) =>
     state.items.filter((item: any) => item.parent == id)
   );

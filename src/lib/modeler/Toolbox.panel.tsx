@@ -1,12 +1,11 @@
 import { Tabs } from "@mantine/core";
 import { IconSettings, IconListDetails } from "@tabler/icons-react";
-// import { ThemeContext } from "../../store/ThemeProvider";
 
 import { useThemeStore } from "../../store/theme.store";
-import Controls from "./leftPanel/Controls";
-import Settings from "./leftPanel/Settings";
+import Controls from "./toolbox/Controls";
+import Settings from "./toolbox/Settings";
 
-const LeftPanel = () => {
+const ToolboxPanel = () => {
   // const { dir } = useContext(ThemeContext);
 
   const dir = useThemeStore((state: any) => state.dir);
@@ -45,4 +44,4 @@ const LeftPanel = () => {
   );
 };
 
-export default LeftPanel;
+export default ToolboxPanel;
