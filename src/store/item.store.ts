@@ -13,6 +13,16 @@ export const useItemStore = create(
           item.id = v4();
           state.items.push(item);
         }),
+      editItem: (item: any) =>
+        set((state: any) => {
+          const index = state.items.findIndex((i: any) => i.id === item.id);
+          state.items[index] = item;
+        }),
+      deleteItem: (id: string) =>
+        set((state: any) => {
+          const index = state.items.findIndex((i: any) => i.id === id);
+          state.items.splice(index, 1);
+        }),
     }))
   )
 );

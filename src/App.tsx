@@ -1,5 +1,3 @@
-
-
 import "./App.css";
 
 import { Formis, FormisModeler } from "./lib/index";
@@ -8,7 +6,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, Route, Routes } from "react-router-dom";
 import GridView from "./views/GridView";
 import MantineForm from "./views/MantineForm";
-
+import DndView from "./views/DndView";
 
 function App() {
   return (
@@ -36,6 +34,9 @@ function App() {
               <Nav.Link to="/mantineform" as={Link}>
                 Mantine Form
               </Nav.Link>
+              <Nav.Link to="/dnd-kit" as={Link}>
+                DND kit
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -49,7 +50,11 @@ function App() {
             element={<DragAndDrop></DragAndDrop>}
           ></Route>
           <Route path="/grid" element={<GridView></GridView>}></Route>
-          <Route path="/mantineform" element={<MantineForm></MantineForm>}></Route>
+          <Route
+            path="/mantineform"
+            element={<MantineForm></MantineForm>}
+          ></Route>
+          <Route path="/dnd-kit" element={<DndView></DndView>}></Route>
         </Routes>
       </Container>
     </div>

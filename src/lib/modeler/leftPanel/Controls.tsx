@@ -67,7 +67,7 @@ const controlsList = [
   {
     type: FormItemTypeEnum.Grid,
     label: "Grid",
-    dragTargetType : ItemDragTargetTypeEnums.Wrapper,
+    
   },
   {
     type: FormItemTypeEnum.Divider,
