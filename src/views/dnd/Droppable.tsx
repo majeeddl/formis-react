@@ -8,11 +8,12 @@ const Droppable = (props: any) => {
   });
   const style = {
     color: isOver ? "green" : undefined,
+    border : "1px solid silver",
   };
 
   return (
     <div ref={setNodeRef} style={style}>
-      {props.children}
+      {props.id} : {props.children}
     </div>
   );
 };
