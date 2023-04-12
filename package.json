@@ -36,6 +36,9 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/modifiers": "^6.0.1",
+    "@dnd-kit/sortable": "^7.0.2",
     "@emotion/react": "^11.10.6",
     "@mantine/core": "^6.0.0",
     "@mantine/form": "^6.0.0",

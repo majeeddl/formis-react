@@ -36,6 +36,9 @@ function App() {
               <Nav.Link to="/mantineform" as={Link}>
                 Mantine Form
               </Nav.Link>
+               <Nav.Link to="/dnd-kit" as={Link}>
+                DND kit
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
