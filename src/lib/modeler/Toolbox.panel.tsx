@@ -5,7 +5,7 @@ import { useThemeStore } from "../../store/theme.store";
 import Controls from "./toolbox/Controls";
 import Settings from "./toolbox/Settings";
 
-const ToolboxPanel = () => {
+const ToolboxPanel = (props:any) => {
   // const { dir } = useContext(ThemeContext);
 
   const dir = useThemeStore((state: any) => state.dir);

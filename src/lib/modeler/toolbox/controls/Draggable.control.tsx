@@ -3,10 +3,27 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@mantine/core";
 
-const Draggable = (props: any) => {
+const ControlDraggable = ({
+  id = "draggable",
+  control,
+  data = {},
+  children,
+}: {
+  id?: string;
+  control: {
+    type: string;
+    label: string;
+  };
+  data?: any;
+  children: any;
+}) => {
   const { attributes, listeners, setNodeRef } = useDraggable({
-    id: props.id,
-    // data : props.data
+    id: id,
+    data: {
+      children,
+      control,
+      ...data,
+    },
   });
   // const style = transform ? {
   //   // transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
@@ -17,9 +34,9 @@ const Draggable = (props: any) => {
     //   {props.children}
     // </Button>
     <div ref={setNodeRef} {...listeners} {...attributes}>
-      {props.children}
+      {children}
     </div>
   );
 };
 
-export default Draggable;
+export default ControlDraggable;

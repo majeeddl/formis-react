@@ -10,7 +10,7 @@ interface DropResult {
   name: string;
 }
 
-const Item = ({
+const ControlItem = ({
   dragTargetType = ItemDragTargetTypeEnums.Item,
   name,
   ...props
@@ -18,40 +18,29 @@ const Item = ({
   dragTargetType?: ItemDragTargetTypeEnums;
   name: string;
 }) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: name,
-    // data : props.data
-  });
+  // const { attributes, listeners, setNodeRef, transform } = useDraggable({
+  //   id: name,
+  //   // data : props.data
+  // });
 
-  const style = transform
-    ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      }
-    : undefined;
+  // const style = transform
+  //   ? {
+  //       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+  //     }
+  //   : undefined;
 
   return (
     <>
-      {/* <Button
-        ref={setNodeRef}
-        fullWidth
-        variant="default"
-        color="dark"
-        size="xs"
-        {...listeners}
-        {...attributes}
-      >
-        {name}
-      </Button> */}
-
       <Button
-        ref={setNodeRef}
-        style={style}
-        {...listeners}
-        {...attributes}
+        // ref={setNodeRef}
+        // style={style}
+        // {...listeners}
+        // {...attributes}
         fullWidth
         variant="default"
         color="dark"
         size="xs"
+        {...props}
       >
         {name}
       </Button>
@@ -59,4 +48,4 @@ const Item = ({
   );
 };
 
-export default Item;
+export default ControlItem;

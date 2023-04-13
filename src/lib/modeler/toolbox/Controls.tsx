@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Col, Grid, Divider } from "@mantine/core";
-import Item, { ItemDragTargetTypeEnums } from "./controls/Item.control";
+import ControlItem, { ItemDragTargetTypeEnums } from "./controls/Item.control";
 
 import { controlsList } from "./controls/list.control";
 import { DragOverlay } from "@dnd-kit/core";
+import ControlDraggable from "./controls/Draggable.control";
 
 const Controls = () => {
   return (
@@ -19,12 +20,13 @@ const Controls = () => {
 
         return (
           <Col span={6} key={control.type}>
-            <Item
-              name={control.label}
-              data-cy={`control-item-${control.type}`}
-              {...control}
-            ></Item>
-           
+            <ControlDraggable id={control.label} control={control}>
+              <ControlItem
+                name={control.label}
+                data-cy={`control-item-${control.type}`}
+                {...control}
+              ></ControlItem>
+            </ControlDraggable>
           </Col>
         );
       })}
