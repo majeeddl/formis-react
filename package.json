@@ -2,7 +2,7 @@
   "name": "formis-react",
   "version": "1.0.7",
   "description": "This is a react form generator",
-  "license": "MIT",
+  "license": "BSD",
   "author": "Majeed Dourandeesh",
   "type": "module",
   "repository": {
