@@ -34,7 +34,7 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
     <>
       FormModeler
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        <Droppable id="draggable"></Droppable>
+        {/* <Droppable id="draggable"></Droppable> */}
         <Grid columns={24} className="mt-6 text-sm">
           <Grid.Col span={8} className="border-gray-500 border border-solid">
             <ToolboxPanel>

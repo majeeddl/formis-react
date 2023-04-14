@@ -1,7 +1,7 @@
 import { FormItemProps } from "antd";
 import React, { useState } from "react";
 
-import DropArea from "./DropArea";
+
 import FormItem from "./FormItem";
 import { ItemDragTargetTypeEnums } from "../../lib/modeler/toolbox/controls/Item.control";
 
@@ -20,9 +20,9 @@ const Form = ({ mode = FormModeEnums.view, items = [] }: FormProps) => {
 
   // const _items = useAppSelector((state) => state.items.items);
 
-  const dropItem = (item: any) => {
-    console.log("drop item in right panel");
-  };
+  // const dropItem = (item: any) => {
+  //   console.log("drop item in right panel");
+  // };
 
   return (
     <>
