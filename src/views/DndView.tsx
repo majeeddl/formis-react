@@ -9,7 +9,7 @@ const DndView = () => {
   //   const draggableMarkup = <Draggable>Drag me</Draggable>;
 
   const [parent, setParent] = useState(null);
-  const draggableMarkup = <Draggable id="draggable">Drag me</Draggable>;
+  const draggableMarkup = <Draggable id="unique-id'">Drag me</Draggable>;
 
   const handleDragEnd = (event: any) => {
     console.log(event);
@@ -31,9 +31,11 @@ const DndView = () => {
             // We updated the Droppable component so it would accept an `id`
             // prop and pass it to `useDroppable`
             <Droppable key={id} id={id} data={"data_test"}>
-              {parent === id ? draggableMarkup : "Drop here"}
+              {id} :{parent === id ? draggableMarkup : "Drop here"}
             </Droppable>
           ))}
+
+          <Droppable id={"unique-id"}>DROP</Droppable>
         </DndContext>
       </div>
     </div>

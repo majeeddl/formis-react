@@ -1,52 +1,73 @@
 import { Card, Grid, Loader, LoadingOverlay } from "@mantine/core";
-import React, { FunctionComponent, useEffect } from "react";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { useItemStore } from "../store/item.store";
-import { useAppSelector } from "../store/redux/hooks";
-import { Dustbin } from "../views/dragAndDrop/Dustbin";
-import LeftPanel from "./modeler/LeftPanel";
-import RightPanel from "./modeler/RightPanel";
+
+import { DndContext, DragOverlay } from "@dnd-kit/core";
+
+import FormPanel from "./modeler/Form.panel";
+import ToolboxPanel from "./modeler/Toolbox.panel";
+import Draggable from "../views/dnd/Draggable";
+import Droppable from "../views/dnd/Droppable";
+import ControlItem from "./modeler/toolbox/controls/Item.control";
 
 type FormisModelerProps = {
   items?: any;
   onChange?: (items: any) => {};
   onSave?: (items: any) => {};
 };
-// show me an example of forwarfRef with type annotation in typescript react
+// show me an example of forwardRef with type annotation in typescript react
 
 const FormModeler: FunctionComponent<FormisModelerProps> = ({
   onChange = () => {},
   onSave = () => {},
 }) => {
-  // const items = useAppSelector((state) => state.items.items);
-
   const items = useItemStore((state: any) => state.items);
 
-  useEffect(() => {
-    console.log("items : ", items);
-    onChange(items);
-  }, [items]);
+  const [isDragging, setIsDragging] = useState(false);
+  const [control, setControl] = useState<string>("");
+  // useEffect(() => {
+  //   console.log("items : ", items);
+  //   onChange(items);
+  // }, [items]);
 
   return (
     <>
       FormModeler
-      <DndProvider debugMode={true} backend={HTML5Backend}>
+      <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+        {/* <Droppable id="draggable"></Droppable> */}
         <Grid columns={24} className="mt-6 text-sm">
           <Grid.Col span={8} className="border-gray-500 border border-solid">
-            <LeftPanel></LeftPanel>
+            <ToolboxPanel>
+              <Draggable id="test"> DRAG ME</Draggable>
+            </ToolboxPanel>
           </Grid.Col>
           <Grid.Col
             span={16}
             className="border-gray-500 border border-solid relative"
           >
             <LoadingOverlay visible={false} overlayBlur={2} />
-            <RightPanel></RightPanel>
+            <FormPanel></FormPanel>
           </Grid.Col>
         </Grid>
-      </DndProvider>
+        <DragOverlay dropAnimation={null}>
+          {isDragging ? <ControlItem name={control}></ControlItem> : null}
+        </DragOverlay>
+      </DndContext>
+      {/* </DndProvider> */}
     </>
   );
+
+  function handleDragStart(event: any) {
+    console.log(event);
+    setControl(event?.active?.id);
+    setIsDragging(true);
+  }
+
+  function handleDragEnd(event: any) {
+    console.log(event);
+    setControl("");
+    setIsDragging(false);
+  }
 };
 
 export default FormModeler;
