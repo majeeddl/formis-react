@@ -22,4 +22,4 @@ npm install --save formis-react
 
 ## License
 
-MIT © [Majeed Dourandeesh](https://github.com/majeeddl)
+BSD © [Majeed Dourandeesh](https://github.com/majeeddl)
