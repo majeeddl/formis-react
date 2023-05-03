@@ -58,13 +58,19 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
   );
 
   function handleDragStart(event: any) {
-    console.log(event);
+    console.log(
+      "🚀 ~ file: FormisModeler.tsx:61 ~ handleDragStart ~ event:",
+      event
+    );
     setControl(event?.active?.id);
     setIsDragging(true);
   }
 
   function handleDragEnd(event: any) {
-    console.log(event);
+    console.log(
+      "🚀 ~ file: FormisModeler.tsx:67 ~ handleDragEnd ~ event:",
+      event
+    );
     setControl("");
     setIsDragging(false);
   }
