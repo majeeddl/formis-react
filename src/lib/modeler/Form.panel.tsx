@@ -1,5 +1,5 @@
-import { useItemStore } from "../../store/item.store";
-import Form, { FormModeEnums } from "../../components/form/Form";
+import { useItemStore } from "../store/item.store";
+import Form, { FormModeEnums } from "../components/form/Form";
 
 const FormPanel = () => {
   // useEffect(() => {

@@ -1,6 +1,6 @@
 import { Card, Grid, Loader, LoadingOverlay } from "@mantine/core";
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { useItemStore } from "../store/item.store";
+import { useItemStore } from "./store/item.store";
 
 import { DndContext, DragOverlay } from "@dnd-kit/core";
 

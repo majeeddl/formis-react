@@ -1,9 +1,10 @@
 import { Tabs } from "@mantine/core";
 import { IconSettings, IconListDetails } from "@tabler/icons-react";
 
-import { useThemeStore } from "../../store/theme.store";
+
 import Controls from "./toolbox/Controls";
 import Settings from "./toolbox/Settings";
+import { useThemeStore } from "../store/theme.store";
 
 const ToolboxPanel = (props:any) => {
   // const { dir } = useContext(ThemeContext);
@@ -45,3 +46,5 @@ const ToolboxPanel = (props:any) => {
 };
 
 export default ToolboxPanel;
+
+

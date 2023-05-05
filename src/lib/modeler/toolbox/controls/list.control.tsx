@@ -1,4 +1,4 @@
-import { FormItemTypeEnum } from "../../../../components/form/FormItem";
+import { FormItemTypeEnum } from "../../../components/form/FormItem";
 
 export const controlsList = [
   {

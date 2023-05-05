@@ -3,9 +3,9 @@ import { Grid as MantineGrid } from "@mantine/core";
 import Col from "./grid/Col";
 import FormItem, { FormItemStateEnum, FormItemTypeEnum } from "../../FormItem";
 import DropArea from "../../DropArea";
-import { ItemDragTargetTypeEnums } from "../../../../lib/modeler/toolbox/controls/Item.control";
 import { useItemStore } from "../../../../store/item.store";
-import { ConditionalWrapper } from "../../../utils/ConditionalWrapper";
+import { ConditionalWrapper } from "../../../../../components/utils/ConditionalWrapper";
+import { ItemDragTargetTypeEnums } from "../../../../modeler/toolbox/controls/Item.control";
 
 type GridPropsType = {
   id?: string;
