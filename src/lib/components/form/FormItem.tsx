@@ -38,7 +38,9 @@ export enum FormItemSizeEnum {
   xl = "xl",
 }
 
-export type FormItemProps = {
+export interface FormItemProps{
+  id?: string;
+  label?: string;
   state?: FormItemStateEnum;
   type: FormItemTypeEnum;
 };
@@ -48,10 +50,7 @@ const FormItem = ({
   type,
   ...props
 }: FormItemProps) => {
-
-
   
-
   return (
     <>
       <div className={`form-item-box`}>

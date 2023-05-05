@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Grid as MantineGrid } from "@mantine/core";
 import Col from "./grid/Col";
 import FormItem, { FormItemStateEnum, FormItemTypeEnum } from "../../FormItem";
-import DropArea from "../../DropArea";
+
 import { useItemStore } from "../../../../store/item.store";
 import { ConditionalWrapper } from "../../../../../components/utils/ConditionalWrapper";
 import { ItemDragTargetTypeEnums } from "../../../../modeler/toolbox/controls/Item.control";

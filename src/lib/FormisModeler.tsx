@@ -1,4 +1,4 @@
-import { Card, Grid, Loader, LoadingOverlay } from "@mantine/core";
+import { Card, Grid, Loader, LoadingOverlay, TextInput } from '@mantine/core';
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useItemStore } from "./store/item.store";
 
@@ -9,6 +9,8 @@ import ToolboxPanel from "./modeler/Toolbox.panel";
 import Draggable from "../views/dnd/Draggable";
 import Droppable from "../views/dnd/Droppable";
 import ControlItem from "./modeler/toolbox/controls/Item.control";
+import { FormItemTypeEnum } from "./components/form/FormItem";
+import { useFormStore } from "./store/form.store";
 
 type FormisModelerProps = {
   items?: any;
@@ -21,7 +23,7 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
   onChange = () => {},
   onSave = () => {},
 }) => {
-  const items = useItemStore((state: any) => state.items);
+  const addItem = useFormStore((state) => state.addItem);
 
   const [isDragging, setIsDragging] = useState(false);
   const [control, setControl] = useState<string>("");
@@ -58,10 +60,10 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
   );
 
   function handleDragStart(event: any) {
-    console.log(
-      "🚀 ~ file: FormisModeler.tsx:61 ~ handleDragStart ~ event:",
-      event
-    );
+    // console.log(
+    //   "🚀 ~ file: FormisModeler.tsx:61 ~ handleDragStart ~ event:",
+    //   event
+    // );
     setControl(event?.active?.id);
     setIsDragging(true);
   }
@@ -73,6 +75,13 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
     );
     setControl("");
     setIsDragging(false);
+    addItem(
+      {
+        type: FormItemTypeEnum.Input,
+        label: "test",
+      },
+      0
+    );
   }
 };
 
