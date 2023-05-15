@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 import FormItem, { FormItemProps } from "./FormItem";
@@ -16,14 +15,13 @@ export type FormProps = {
 };
 
 const Form = ({ mode = FormModeEnums.view, items = [] }: FormProps) => {
-  
   return (
     <>
-      
-      <Droppable id="1"></Droppable>
+      <Droppable id="-1"></Droppable>
       {items.map((item: any, index: number) => (
         <div className="mt-1" key={`${item.id}`}>
           <FormItem type={item.type} {...item} mode={mode}></FormItem>
+          <Droppable id={index}></Droppable>
         </div>
       ))}
 
@@ -34,7 +32,7 @@ const Form = ({ mode = FormModeEnums.view, items = [] }: FormProps) => {
       >
         ------
       </div>
-      <Droppable id="2"></Droppable>
+
       {/* <button onClick={() => console.log(items)}>button</button> */}
     </>
   );

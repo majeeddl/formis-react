@@ -7,8 +7,12 @@ const Droppable = (props: any) => {
     data: props.data,
   });
   const style = {
+    "text-align": "center",
+    "-moz-transition": "height .1s linear",
+    marginTop: 3,
+    height: isOver ? 30 : 5,
     color: isOver ? "green" : undefined,
-    border: isOver ? "2px solid green" : "1px solid silver",
+    border: isOver ? "2px dashed green" : "1px dashed silver",
   };
 
   useEffect(() => {
@@ -18,7 +22,7 @@ const Droppable = (props: any) => {
 
   return (
     <div ref={setNodeRef} style={style}>
-      I : {isOver && "this is over"}
+      &nbsp; {isOver && "Drag Here"}
       {/* {props.id} : {props.children} */}
     </div>
   );

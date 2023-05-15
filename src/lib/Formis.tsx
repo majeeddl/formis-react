@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState } from "react";
 import rtlPlugin from "stylis-plugin-rtl";
 import {  createEmotionCache, MantineProvider } from "@mantine/core";
 import { FormisModeler, FormisViewer } from ".";
+import { ModalsProvider } from "@mantine/modals";
 
 
 import "../assets/main.scss";
@@ -31,10 +32,11 @@ const Formis: FunctionComponent = ({
       emotionCache={_rtl ? rtlCache : undefined}
     >
       {/* <FormisProvider items={items}> */}
-      <>
+      <ModalsProvider>
         <FormisModeler></FormisModeler>
         <FormisViewer></FormisViewer>
-      </>
+      </ModalsProvider>
+      <></>
       {/* </FormisProvider> */}
     </MantineProvider>
     // </Provider>

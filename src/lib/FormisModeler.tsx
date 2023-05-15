@@ -1,4 +1,4 @@
-import { Card, Grid, Loader, LoadingOverlay, TextInput } from '@mantine/core';
+import { Card, Grid, Loader, LoadingOverlay, TextInput } from "@mantine/core";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useItemStore } from "./store/item.store";
 
@@ -36,7 +36,6 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
     <>
       FormModeler
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        {/* <Droppable id="draggable"></Droppable> */}
         <Grid columns={24} className="mt-6 text-sm">
           <Grid.Col span={8} className="border-gray-500 border border-solid">
             <ToolboxPanel>
@@ -55,7 +54,6 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
           {isDragging ? <ControlItem name={control}></ControlItem> : null}
         </DragOverlay>
       </DndContext>
-      {/* </DndProvider> */}
     </>
   );
 
@@ -69,18 +67,27 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
   }
 
   function handleDragEnd(event: any) {
+    if (!event.over) return;
     console.log(
       "🚀 ~ file: FormisModeler.tsx:67 ~ handleDragEnd ~ event:",
       event
     );
+
+    console.log("event.active : ", { ...event.active.data.current.control });
     setControl("");
     setIsDragging(false);
+
+    const data = event.active.data.current.control;
+    const id = parseInt(event.over.id);
+
+    console.log("id : ", id);
+
     addItem(
       {
-        type: FormItemTypeEnum.Input,
-        label: "test",
+        type: data.type,
+        label: data.label,
       },
-      0
+      id + 1
     );
   }
 };
