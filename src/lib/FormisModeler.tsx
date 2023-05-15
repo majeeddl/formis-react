@@ -9,7 +9,7 @@ import ToolboxPanel from "./modeler/Toolbox.panel";
 import Draggable from "../views/dnd/Draggable";
 import Droppable from "../views/dnd/Droppable";
 import ControlItem from "./modeler/toolbox/controls/Item.control";
-import { FormItemTypeEnum } from "./components/form/FormItem";
+import FormItem, { FormItemTypeEnum } from "./components/form/FormItem";
 import { useFormStore } from "./store/form.store";
 
 type FormisModelerProps = {
@@ -26,7 +26,7 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
   const addItem = useFormStore((state) => state.addItem);
 
   const [isDragging, setIsDragging] = useState(false);
-  const [control, setControl] = useState<string>("");
+  const [draggingItem, setDraggingItem] = useState<any>(null);
   // useEffect(() => {
   //   console.log("items : ", items);
   //   onChange(items);
@@ -51,18 +51,32 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
           </Grid.Col>
         </Grid>
         <DragOverlay dropAnimation={null}>
-          {isDragging ? <ControlItem name={control}></ControlItem> : null}
+          {draggingItem?.active?.data?.current?.control ? (
+            <ControlItem name={draggingItem?.active?.id}></ControlItem>
+          ) : null}
+          {draggingItem?.active?.data?.current?.formItem ? (
+            <>
+              {/* {draggingItem?.active.id} */}
+              <div className="bg-white">
+                <FormItem
+                  {...draggingItem?.active.data.current.formItem}
+                ></FormItem>
+              </div>
+            </>
+          ) : null}
         </DragOverlay>
       </DndContext>
     </>
   );
 
   function handleDragStart(event: any) {
-    // console.log(
-    //   "🚀 ~ file: FormisModeler.tsx:61 ~ handleDragStart ~ event:",
-    //   event
-    // );
-    setControl(event?.active?.id);
+    console.log(
+      "🚀 ~ file: FormisModeler.tsx:61 ~ handleDragStart ~ event:",
+      event
+    );
+    // setControl(event?.active?.id);
+    setDraggingItem(event);
+    console.log(event);
     setIsDragging(true);
   }
 
@@ -73,19 +87,22 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
       event
     );
 
-    console.log("event.active : ", { ...event.active.data.current.control });
-    setControl("");
+    console.log("event : ", { ...event });
+    setDraggingItem(null);
     setIsDragging(false);
 
-    const data = event.active.data.current.control;
+    const { control, formItem } = event.active.data.current;
+
+    const item = control || formItem;
+
+    console.log("item : ", item);
     const id = parseInt(event.over.id);
 
     console.log("id : ", id);
 
     addItem(
       {
-        type: data.type,
-        label: data.label,
+        ...item,
       },
       id + 1
     );

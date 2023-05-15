@@ -1,15 +1,18 @@
 import React, { FC } from "react";
 import { Col as MantineCol } from "@mantine/core";
 
-type ColPropsType = {
+interface ColPropsType
+  extends React.ComponentPropsWithoutRef<typeof MantineCol> {
   span: number;
   children?: any;
-};
+}
 
-const Col: FC<ColPropsType> = ({ span, children }) => {
+const Col = ({ span, children, ...props }: ColPropsType) => {
   return (
     <>
-      <MantineCol span={span} lg={span}>{children}</MantineCol>
+      <MantineCol span={span} lg={span} {...props}>
+        {children}
+      </MantineCol>
     </>
   );
 };

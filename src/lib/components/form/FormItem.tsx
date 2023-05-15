@@ -1,4 +1,4 @@
-import { Group, Switch, Text } from "@mantine/core";
+import { ActionIcon, Group, Switch, Text } from "@mantine/core";
 import Input from "./formItems/Input";
 import Divider from "./formItems/layouts/Divider";
 import Grid from "./formItems/layouts/Grid";
@@ -8,7 +8,7 @@ import NumberInput from "./formItems/NumberInput";
 import Select from "./formItems/Select";
 import Textarea from "./formItems/Textarea";
 import Button from "./formItems/Button";
-import { IconTrash } from "@tabler/icons-react";
+import { IconArrowsMove, IconTrash } from "@tabler/icons-react";
 import { useFormStore } from "../../store/form.store";
 import { modals } from "@mantine/modals";
 
@@ -46,14 +46,21 @@ export interface FormItemProps {
   label?: string;
   state?: FormItemStateEnum;
   type: FormItemTypeEnum;
+  selected?: boolean;
+  setActivatorNodeRef?: any;
+  listeners?: any;
 }
 
 const FormItem = ({
   state = FormItemStateEnum.View,
   type,
+  listeners,
+  selected = false,
+  setActivatorNodeRef,
   ...props
 }: FormItemProps) => {
   const deleteItem = useFormStore((state: any) => state.deleteItem);
+  const setSelected = useFormStore((state: any) => state.setSelected);
 
   const openModal = () =>
     modals.openConfirmModal({
@@ -75,21 +82,26 @@ const FormItem = ({
       <div
         className={`form-item-box`}
         style={{
-          border: "1px solid silver",
-          borderLeft: "3px solid #228be6",
+          border: ` ${selected ? "1px solid #228be6" : "1px solid silver"}`,
+          borderLeft: ` ${selected ? "3px solid #228be6" : "3px solid silver"}`,
           padding: 5,
         }}
+        onClick={() => setSelected(props.id)}
       >
         <Group position="apart">
           <Group>
             <Text size="xs">{props.id}</Text>
           </Group>
-          <Group>
-            <IconTrash
+          <Group spacing="xs">
+            <ActionIcon variant="transparent" color="red.8" size={"sm"}>
+              <IconTrash onClick={() => openModal()}></IconTrash>
+            </ActionIcon>
+            <IconArrowsMove
               size={20}
-              className="cursor-pointer text-red-700"
-              onClick={() => openModal()}
-            ></IconTrash>
+              className="cursor-move"
+              {...setActivatorNodeRef}
+              {...listeners}
+            ></IconArrowsMove>
           </Group>
         </Group>
         {type == FormItemTypeEnum.Grid && <Grid {...props}></Grid>}

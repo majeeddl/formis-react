@@ -6,6 +6,7 @@ import FormItem, { FormItemStateEnum, FormItemTypeEnum } from "../../FormItem";
 import { useItemStore } from "../../../../store/item.store";
 import { ConditionalWrapper } from "../../../../../components/utils/ConditionalWrapper";
 import { ItemDragTargetTypeEnums } from "../../../../modeler/toolbox/controls/Item.control";
+import Droppable from "../../common/Droppable";
 
 type GridPropsType = {
   id?: string;
@@ -26,24 +27,12 @@ const Grid: FC<GridPropsType> = ({
 
   return (
     <>
-      GRID : {id}
       <MantineGrid columns={columns} className="border m-1">
         {spans.map((span, index) => (
-          <Col span={span} key={`s_${span}_${index}`}>
-            <div className="border">
+          <Col span={span} key={`s_${span}_${index}`} p={2}>
+            <div className="border" style={{ minHeight: 40 }}>
               {
-                <ConditionalWrapper
-                  condition={true}
-                  wrapper={(children) => (
-                    <DropArea
-                      accept={ItemDragTargetTypeEnums.Item}
-                      index={index}
-                      parent={id}
-                    >
-                      {children}
-                    </DropArea>
-                  )}
-                >
+                <>
                   {items
                     .filter((item: any) => item.index == index)
                     .map((item: any) => (
@@ -51,7 +40,29 @@ const Grid: FC<GridPropsType> = ({
                         <FormItem {...item}></FormItem>
                       </>
                     ))}
-                </ConditionalWrapper>
+                  <Droppable id={`${id}_${index}`}></Droppable>
+                </>
+                // <ConditionalWrapper
+                //   condition={true}
+                //   wrapper={(children) => (
+                //     <div
+                //     // accept={ItemDragTargetTypeEnums.Item}
+                //     // index={index}
+                //     // parent={id}
+                //     >
+                //       {children}
+                //     </div>
+                //   )}
+                // >
+
+                //   {items
+                //     .filter((item: any) => item.index == index)
+                //     .map((item: any) => (
+                //       <>
+                //         <FormItem {...item}></FormItem>
+                //       </>
+                //     ))}
+                // </ConditionalWrapper>
               }
             </div>
           </Col>

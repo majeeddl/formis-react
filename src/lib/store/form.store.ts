@@ -5,15 +5,17 @@ import { v4 } from "uuid";
 
 interface IFormStore {
   items: FormItemProps[] | any;
+  getItem: (id: string) => any;
   setItems: (items: any) => void;
   addItem: (item: any, index: number) => void;
   editItem: (item: any) => void;
   deleteItem: (id: string) => void;
   clear: () => void;
+  setSelected: (id: string) => void;
 }
 
 export const useFormStore = create<IFormStore>()(
-  subscribeWithSelector((set: any) => ({
+  subscribeWithSelector((set: any, get: any) => ({
     items: [
       // {
       //   name: "name",
@@ -35,6 +37,7 @@ export const useFormStore = create<IFormStore>()(
       //   ]
       // },
     ],
+    getItem: (id: string) => get().items.find((i: any) => i.id === id),
     setItems: (items: any) => set({ items }),
     addItem: (item: any, index: number) =>
       set((state: any) => {
@@ -49,15 +52,25 @@ export const useFormStore = create<IFormStore>()(
       }),
     deleteItem: (id: string) =>
       set((state: any) => {
-        console.log(id);
         const index = state.items.findIndex((i: any) => i.id === id);
-        console.log(index);
         state.items.splice(index, 1);
-        console.log(state.items);
         return {
           items: state.items,
         };
       }),
     clear: () => set({ items: [] }),
+    setSelected: (id: string) =>
+      set((state: any) => {
+        const index = state.items.findIndex((i: any) => i.id === id);
+        const item = state.items[index];
+        state.items.forEach((i: any) => (i.selected = false));
+        state.items[index] = {
+          ...item,
+          selected: true,
+        };
+        return {
+          items: state.items,
+        };
+      }),
   }))
 );

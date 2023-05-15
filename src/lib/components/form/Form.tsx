@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import FormItem, { FormItemProps } from "./FormItem";
 // import { ItemDragTargetTypeEnums } from "../../lib/modeler/toolbox/controls/Item.control";
 import Droppable from "./common/Droppable";
+import FormItemDraggable from "./common/Draggable.formItem";
 
 export enum FormModeEnums {
   view = "view",
@@ -20,18 +21,20 @@ const Form = ({ mode = FormModeEnums.view, items = [] }: FormProps) => {
       <Droppable id="-1"></Droppable>
       {items.map((item: any, index: number) => (
         <div className="mt-1" key={`${item.id}`}>
-          <FormItem type={item.type} {...item} mode={mode}></FormItem>
+          <FormItemDraggable id={item.id} formItem={item}>
+            <FormItem type={item.type} {...item} mode={mode}></FormItem>
+          </FormItemDraggable>
           <Droppable id={index}></Droppable>
         </div>
       ))}
 
-      <div
+      {/* <div
         style={{
           padding: 40,
         }}
       >
         ------
-      </div>
+      </div> */}
 
       {/* <button onClick={() => console.log(items)}>button</button> */}
     </>
