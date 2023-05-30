@@ -64,6 +64,7 @@ export const controlsList = [
   {
     type: FormItemTypeEnum.Grid,
     label: "Grid",
+    cols : 2,
   },
   {
     type: FormItemTypeEnum.Divider,

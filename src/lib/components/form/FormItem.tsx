@@ -20,6 +20,7 @@ export enum FormItemStateEnum {
 
 export enum FormItemTypeEnum {
   Grid = "grid",
+  Col = "col",
   Divider = "divider",
   Label = "label",
   Input = "input",
@@ -43,6 +44,8 @@ export enum FormItemSizeEnum {
 
 export interface FormItemProps {
   id?: string;
+  x: number;
+  y: number;
   label?: string;
   state?: FormItemStateEnum;
   type: FormItemTypeEnum;
@@ -90,7 +93,9 @@ const FormItem = ({
       >
         <Group position="apart">
           <Group>
-            <Text size="xs">{props.id}</Text>
+            <Text size="xs">
+              {props.id} - x : {props.x} - y : {props.y}
+            </Text>
           </Group>
           <Group spacing="xs">
             <ActionIcon variant="transparent" color="red.8" size={"sm"}>

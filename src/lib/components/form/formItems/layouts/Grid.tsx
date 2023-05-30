@@ -40,7 +40,7 @@ const Grid: FC<GridPropsType> = ({
                         <FormItem {...item}></FormItem>
                       </>
                     ))}
-                  <Droppable id={`${id}_${index}`}></Droppable>
+                  <Droppable id={`${id}_${index}`} y={index}></Droppable>
                 </>
                 // <ConditionalWrapper
                 //   condition={true}

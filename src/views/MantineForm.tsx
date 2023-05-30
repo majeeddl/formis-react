@@ -58,7 +58,7 @@ const MantineForm = () => {
                     type: "checkbox",
                   })}
                 />
-                {console.log(form.getInputProps("email"))}
+                {/* {console.log(form.getInputProps("email"))} */}
               </Grid.Col>
             </Grid>
 

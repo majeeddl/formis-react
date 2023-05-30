@@ -1,4 +1,11 @@
-import { Card, Grid, Loader, LoadingOverlay, TextInput } from "@mantine/core";
+import {
+  Card,
+  Code,
+  Grid,
+  Loader,
+  LoadingOverlay,
+  TextInput,
+} from "@mantine/core";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useItemStore } from "./store/item.store";
 
@@ -24,6 +31,8 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
   onSave = () => {},
 }) => {
   const addItem = useFormStore((state) => state.addItem);
+
+  const items = useFormStore((state) => state.items);
 
   const [isDragging, setIsDragging] = useState(false);
   const [draggingItem, setDraggingItem] = useState<any>(null);
@@ -66,6 +75,10 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
           ) : null}
         </DragOverlay>
       </DndContext>
+      <Code mt="30">
+        <pre>{JSON.stringify(items, null, 2)}</pre>
+      </Code>
+      ;
     </>
   );
 
@@ -82,10 +95,10 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
 
   function handleDragEnd(event: any) {
     if (!event.over) return;
-    console.log(
-      "🚀 ~ file: FormisModeler.tsx:67 ~ handleDragEnd ~ event:",
-      event
-    );
+    // console.log(
+    //   "🚀 ~ file: FormisModeler.tsx:67 ~ handleDragEnd ~ event:",
+    //   event
+    // );
 
     console.log("event : ", { ...event });
     setDraggingItem(null);
@@ -97,15 +110,35 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
 
     console.log("item : ", item);
     const id = parseInt(event.over.id);
+    const x = event.over?.data?.current?.x;
+    let y = event.over?.data?.current?.y;
 
-    console.log("id : ", id);
+    // console.log("id : ", id);
 
-    addItem(
-      {
-        ...item,
-      },
-      id + 1
-    );
+    // if (item.type == FormItemTypeEnum.Grid) {
+    //   addItem(
+    //     {
+    //       type: FormItemTypeEnum.Col,
+    //       x: 0,
+    //       y : 0
+    //     },
+    //     y
+    //   );
+    //   addItem(
+    //     {
+    //       type: FormItemTypeEnum.Col,
+    //       x: 1,
+    //       y : 0
+    //     },
+    //     y
+    //   );
+    // }
+
+    addItem({
+      ...item,
+      x,
+      y: y + 1,
+    });
   }
 };
 

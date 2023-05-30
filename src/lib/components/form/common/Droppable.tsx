@@ -4,7 +4,11 @@ import { useDroppable } from "@dnd-kit/core";
 const Droppable = (props: any) => {
   const { isOver, setNodeRef, active } = useDroppable({
     id: props.id,
-    data: props.data,
+    data: {
+      x: props.x,
+      y: props.y,
+      ...props.data,
+    },
   });
   const style = {
     "text-align": "center",
@@ -16,8 +20,8 @@ const Droppable = (props: any) => {
   };
 
   useEffect(() => {
-    console.log("Droppable isOver", isOver);
-    console.log("dropable over", active);
+    //console.log("Droppable isOver", isOver);
+    //console.log("dropable over", active);
   }, [isOver, active]);
 
   return (

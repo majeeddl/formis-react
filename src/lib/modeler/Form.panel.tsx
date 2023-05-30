@@ -8,7 +8,9 @@ const FormPanel = () => {
   //   console.log(items);
   // }, [items]);
   const _items = useFormStore((state: any) =>
-    state.items.filter((item: any) => item.parent == null)
+    state.items
+      .filter((item: any) => item.parent == null)
+      .sort((a: any, b: any) => a.y - b.y)
   );
 
   return (

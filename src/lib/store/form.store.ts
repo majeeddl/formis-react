@@ -2,12 +2,13 @@ import { create } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
 import { FormItemProps, FormItemTypeEnum } from "../components/form/FormItem";
 import { v4 } from "uuid";
+import { stat } from "fs";
 
 interface IFormStore {
   items: FormItemProps[] | any;
   getItem: (id: string) => any;
   setItems: (items: any) => void;
-  addItem: (item: any, index: number) => void;
+  addItem: (item: any, index?: number) => void;
   editItem: (item: any) => void;
   deleteItem: (id: string) => void;
   clear: () => void;
@@ -17,16 +18,38 @@ interface IFormStore {
 export const useFormStore = create<IFormStore>()(
   subscribeWithSelector((set: any, get: any) => ({
     items: [
+      {
+        id: v4(),
+        type: "input",
+        label: "Name 1",
+        pareny: null,
+        x: 0,
+        y: 1,
+      },
+      {
+        id: v4(),
+        type: "input",
+        label: "Name 2",
+        parent: null,
+        x: 0,
+        y: 0,
+      },
       // {
       //   name: "name",
       //   label: "Name",
       //   type: FormItemTypeEnum.Input,
+      //   parent : null,
+      //   x : 0,
+      //   y : 1,
       // },
       // {
       //   name: "dgendor",
       //   label: "asdasd",
       //   type: FormItemTypeEnum.Radio,
-      //   data : [
+      //   x : 0,
+      //   y : 0,
+      //   parent : null,
+      //   values : [
       //     {
       //       value : "asdsad",
       //       label : "asdsad",
@@ -39,10 +62,19 @@ export const useFormStore = create<IFormStore>()(
     ],
     getItem: (id: string) => get().items.find((i: any) => i.id === id),
     setItems: (items: any) => set({ items }),
-    addItem: (item: any, index: number) =>
+    addItem: (item: any, index?: number) =>
       set((state: any) => {
-        const newItem = { ...item, id: v4() };
-        state.items.splice(index, 0, newItem);
+        const findParent =
+          state.items.find((i: any) => i.id === item.parent) || null;
+        const newItem = { ...item, id: v4(), parent: findParent?.id || null };
+
+        const y = newItem.y || 0;
+
+        state.items.map((item: any) => {
+          return item.y >= y ? (item.y += 1) : item;
+        });
+        state.items.push(newItem);
+        // state.items.splice(index, 0, newItem);
         return state;
       }),
     editItem: (item: any) =>
@@ -56,7 +88,7 @@ export const useFormStore = create<IFormStore>()(
         state.items.splice(index, 1);
         return {
           items: state.items,
-        };
+        }
       }),
     clear: () => set({ items: [] }),
     setSelected: (id: string) =>
