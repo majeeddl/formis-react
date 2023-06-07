@@ -1,4 +1,4 @@
-import { ActionIcon, Group, Switch, Text } from "@mantine/core";
+import { ActionIcon, Group, Switch, Text, Tabs } from '@mantine/core';
 import Input from "./formItems/Input";
 import Divider from "./formItems/layouts/Divider";
 import Grid from "./formItems/layouts/Grid";
@@ -22,6 +22,8 @@ export enum FormItemTypeEnum {
   Grid = "grid",
   Col = "col",
   Divider = "divider",
+  Card = "card",
+  Tabs = "tabs",
   Label = "label",
   Input = "input",
   NumberInput = "number",
@@ -112,6 +114,8 @@ const FormItem = ({
         {type == FormItemTypeEnum.Grid && <Grid {...props}></Grid>}
         {type == FormItemTypeEnum.Divider && <Divider {...props}></Divider>}
         {type == FormItemTypeEnum.Label && <label>{props.label}</label>}
+
+
         {type == FormItemTypeEnum.Input && <Input {...props}></Input>}
         {type == FormItemTypeEnum.NumberInput && (
           <NumberInput {...props}></NumberInput>

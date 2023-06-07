@@ -64,12 +64,20 @@ export const controlsList = [
   {
     type: FormItemTypeEnum.Grid,
     label: "Grid",
-    cols : 2,
+    cols: 2,
   },
   {
     type: FormItemTypeEnum.Divider,
     label: "Divider",
 
     // icon: "test",
+  },
+  {
+    type: FormItemTypeEnum.Card,
+    label: "Card",
+  },
+  {
+    type: FormItemTypeEnum.Tabs,
+    label: "Tabs",
   },
 ];
