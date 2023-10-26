@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Formis, FormisModeler } from "./lib/index";
+import { Formis } from "./lib/index";
 import DragAndDrop from "./views/DragAndDrop";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, Route, Routes } from "react-router-dom";
@@ -11,10 +11,6 @@ import DndView from "./views/DndView";
 function App() {
   return (
     <div className="App">
-      {/* <FormisModeler></FormisModeler>
-      <FormisViewer></FormisViewer> */}
-
-      {/* <DragAndDrop></DragAndDrop> */}
 
       <Navbar bg="light" expand="lg">
         <Container>

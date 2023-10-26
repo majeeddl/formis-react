@@ -62,7 +62,7 @@ const MantineForm = () => {
               </Grid.Col>
             </Grid>
 
-            <Group position="right" mt="md">
+            <Group justify="flex-end">
               <Button type="submit">Submit</Button>
             </Group>
           </form>
