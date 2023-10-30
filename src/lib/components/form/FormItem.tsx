@@ -101,7 +101,8 @@ const FormItem = ({
         <Group justify="space-between">
           <Group>
             <Text size="xs">
-              {props.id} - index: {index} - x : {props.x} - y : {props.y}
+              {props.id} - index: {index}
+               {/* - x : {props.x} - y : {props.y} */}
             </Text>
           </Group>
           <Group gap="xs">

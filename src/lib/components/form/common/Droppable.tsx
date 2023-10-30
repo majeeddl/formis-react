@@ -27,6 +27,7 @@ const Droppable = (props: any) => {
   return (
     <div ref={setNodeRef} style={style}>
       &nbsp; {isOver && "Drag Here"}
+      {props.children}
       {/* {props.id} : {props.children} */}
     </div>
   );

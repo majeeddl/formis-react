@@ -24,7 +24,7 @@ const Form = ({ useFormis }: TFormProps) => {
   return (
     <>
       <Droppable id="-1"></Droppable>
-      <Draggable id="salam">drag me</Draggable>
+      {/* <Draggable id="salam">drag me</Draggable> */}
       {items.map((item: any, index: number) => (
         <div className="mt-1" key={`${item.id}`}>
           <FormItemDraggable id={item.id} formItem={{

@@ -9,21 +9,19 @@ import { ItemDragTargetTypeEnums } from "../../../../modeler/toolbox/controls/It
 import Droppable from "../../common/Droppable";
 
 type GridPropsType = {
-  id?: string;
+  id?: string | null;
   state?: FormItemStateEnum;
   columns?: number;
   spans?: number[];
 };
 
-const Grid: FC<GridPropsType> = ({
+const Grid = ({
   id = null,
   state = FormItemStateEnum.View,
   columns = 24,
   spans = [12, 12],
-}) => {
-  const items = useItemStore((state: any) =>
-    state.items.filter((item: any) => item.parent == id)
-  );
+}: GridPropsType) => {
+  const items = useItemStore((state: any) => state.items.filter((item: any) => item.parent == id));
 
   return (
     <>
@@ -40,7 +38,7 @@ const Grid: FC<GridPropsType> = ({
                         <FormItem {...item}></FormItem>
                       </>
                     ))}
-                  <Droppable id={`${id}_${index}`} y={index}></Droppable>
+                  <Droppable id={`${id}_${index}`} y={index}>{`${id}_${index}`}</Droppable>
                 </>
                 // <ConditionalWrapper
                 //   condition={true}
