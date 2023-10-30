@@ -1,11 +1,4 @@
-import {
-  Card,
-  Code,
-  Grid,
-  Loader,
-  LoadingOverlay,
-  TextInput,
-} from "@mantine/core";
+import { Card, Code, Grid, Loader, LoadingOverlay, TextInput } from "@mantine/core";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useItemStore } from "./store/item.store";
 
@@ -18,21 +11,22 @@ import Droppable from "../views/dnd/Droppable";
 import ControlItem from "./modeler/toolbox/controls/Item.control";
 import FormItem, { FormItemTypeEnum } from "./components/form/FormItem";
 import { useFormStore } from "./store/form.store";
+import { useFormis } from "./hooks/formis.hook";
 
 type FormisModelerProps = {
   items?: any;
   onChange?: (items: any) => {};
   onSave?: (items: any) => {};
+  useFormis: ReturnType<typeof useFormis>;
 };
 // show me an example of forwardRef with type annotation in typescript react
 
-const FormModeler: FunctionComponent<FormisModelerProps> = ({
-  onChange = () => {},
-  onSave = () => {},
-}) => {
-  const addItem = useFormStore((state) => state.addItem);
+const FormModeler = ({ useFormis }: FormisModelerProps) => {
+  // const addItem = useFormStore((state) => state.addItem);
 
-  const items = useFormStore((state) => state.items);
+  // const items = useFormStore((state) => state.items);
+
+  const { items, addItem } = useFormis;
 
   const [isDragging, setIsDragging] = useState(false);
   const [draggingItem, setDraggingItem] = useState<any>(null);
@@ -47,16 +41,14 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <Grid columns={24} className="mt-6 text-sm">
           <Grid.Col span={8} className="border-gray-500 border border-solid">
+            <Draggable id="test"> DRAG ME</Draggable>
             <ToolboxPanel>
-              <Draggable id="test"> DRAG ME</Draggable>
+              {/* <Draggable id="test"> DRAG ME</Draggable> */}
             </ToolboxPanel>
           </Grid.Col>
-          <Grid.Col
-            span={16}
-            className="border-gray-500 border border-solid relative"
-          >
-            <LoadingOverlay visible={false} overlayBlur={2} />
-            <FormPanel></FormPanel>
+          <Grid.Col span={16} className="border-gray-500 border border-solid relative">
+            <LoadingOverlay visible={false} />
+            <FormPanel useFormis={useFormis}></FormPanel>
           </Grid.Col>
         </Grid>
         <DragOverlay dropAnimation={null}>
@@ -67,9 +59,9 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
             <>
               {/* {draggingItem?.active.id} */}
               <div className="bg-white">
-                <FormItem
+                {/* <FormItem
                   {...draggingItem?.active.data.current.formItem}
-                ></FormItem>
+                ></FormItem> */}
               </div>
             </>
           ) : null}
@@ -83,10 +75,7 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
   );
 
   function handleDragStart(event: any) {
-    console.log(
-      "🚀 ~ file: FormisModeler.tsx:61 ~ handleDragStart ~ event:",
-      event
-    );
+    console.log("🚀 ~ file: FormisModeler.tsx:61 ~ handleDragStart ~ event:", event);
     // setControl(event?.active?.id);
     setDraggingItem(event);
     console.log(event);
@@ -113,7 +102,7 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
     const x = event.over?.data?.current?.x;
     let y = event.over?.data?.current?.y;
 
-    // console.log("id : ", id);
+    console.log("id : ", id);
 
     // if (item.type == FormItemTypeEnum.Grid) {
     //   addItem(
@@ -136,9 +125,9 @@ const FormModeler: FunctionComponent<FormisModelerProps> = ({
 
     addItem({
       ...item,
-      x,
-      y: y + 1,
-    });
+      // x,
+      // y: y + 1,
+    },id);
   }
 };
 

@@ -1,8 +1,7 @@
 import React, { FC } from "react";
-import { Col as MantineCol } from "@mantine/core";
+import { Grid } from "@mantine/core";
 
-interface ColPropsType
-  extends React.ComponentPropsWithoutRef<typeof MantineCol> {
+interface ColPropsType extends React.ComponentPropsWithoutRef<typeof MantineCol> {
   span: number;
   children?: any;
 }
@@ -10,9 +9,13 @@ interface ColPropsType
 const Col = ({ span, children, ...props }: ColPropsType) => {
   return (
     <>
-      <MantineCol span={span} lg={span} {...props}>
+      <Grid.Col
+        // span={span} lg={span}
+        span={span}
+        {...props}
+      >
         {children}
-      </MantineCol>
+      </Grid.Col>
     </>
   );
 };

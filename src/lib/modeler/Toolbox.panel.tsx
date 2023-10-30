@@ -20,14 +20,14 @@ const ToolboxPanel = (props:any) => {
               value="controls"
               data-cy="controls-tab"
               className="text-xs"
-              icon={<IconListDetails size={14} />}
+              leftSection={<IconListDetails size={14} />}
             >
               Controls
             </Tabs.Tab>
             <Tabs.Tab
               value="settings"
               data-cy="settings-tab"
-              icon={<IconSettings size={14} />}
+              leftSection={<IconSettings size={14} />}
             >
               Settings
             </Tabs.Tab>

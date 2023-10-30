@@ -5,17 +5,17 @@ const Droppable = (props: any) => {
   const { isOver, setNodeRef, active } = useDroppable({
     id: props.id,
     data: {
-      x: props.x,
-      y: props.y,
+      // x: props.x,
+      // y: props.y,
       ...props.data,
     },
   });
-  const style = {
-    "text-align": "center",
-    "-moz-transition": "height .1s linear",
+  const style:any = {
+    textAlign: "center",
+    MozTransition: "height .1s linear",
     marginTop: 3,
     height: isOver ? 30 : 5,
-    color: isOver ? "green" : undefined,
+    color: isOver ? "green" : "",
     border: isOver ? "2px dashed green" : "1px dashed silver",
   };
 

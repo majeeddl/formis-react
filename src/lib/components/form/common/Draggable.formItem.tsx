@@ -27,9 +27,9 @@ const FormItemDraggable = ({
 
   return (
     <div ref={setNodeRef} {...attributes}>
-      {/* <button ref={setActivatorNodeRef} {...listeners}>
+      <button ref={setActivatorNodeRef} {...listeners}>
         Drag handle
-      </button> */}
+      </button>
       {React.cloneElement(children, { setActivatorNodeRef, listeners })}
     </div>
   );
