@@ -10,7 +10,7 @@ const Droppable = (props: any) => {
       ...props.data,
     },
   });
-  const style:any = {
+  const style: any = {
     textAlign: "center",
     MozTransition: "height .1s linear",
     marginTop: 3,
@@ -20,8 +20,8 @@ const Droppable = (props: any) => {
   };
 
   useEffect(() => {
-    //console.log("Droppable isOver", isOver);
-    //console.log("dropable over", active);
+    // console.log("Droppable isOver", isOver);
+    // console.log("dropable over", active);
   }, [isOver, active]);
 
   return (

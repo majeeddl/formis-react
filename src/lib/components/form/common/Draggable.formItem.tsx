@@ -15,25 +15,24 @@ const FormItemDraggable = ({
   data?: any;
   children: any;
 }) => {
-  const { attributes, listeners, setNodeRef, setActivatorNodeRef } =
-    useDraggable({
-      id: id,
-      data: {
-        children,
-        formItem,
-        ...data,
-      },
-    });
+  const { attributes, listeners, setNodeRef, setActivatorNodeRef } = useDraggable({
+    id: id,
+    data: {
+      // children,
+      formItem,
+      ...data,
+    },
+  });
 
   return (
     <div ref={setNodeRef} {...attributes}>
-      <button ref={setActivatorNodeRef} {...listeners}>
+      {/* <button ref={setActivatorNodeRef} {...listeners}>
         Drag handle
-      </button>
+      </button> */}
+      {/* {children} */}
       {React.cloneElement(children, { setActivatorNodeRef, listeners })}
     </div>
   );
-  e;
 };
 
 export default FormItemDraggable;

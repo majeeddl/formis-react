@@ -25,7 +25,7 @@ const Input = ({
         <InputMantine
           placeholder={placeholder}
           disabled={disabled}
-          invalid={invalid}
+          // invalid={invalid}
           {...(icon ? { icon } : {})}
           {...props}
         />

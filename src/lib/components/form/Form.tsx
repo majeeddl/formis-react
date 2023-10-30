@@ -5,6 +5,7 @@ import FormItem, { FormItemProps } from "./FormItem";
 import Droppable from "./common/Droppable";
 import FormItemDraggable from "./common/Draggable.formItem";
 import { useFormis } from "../../hooks/formis.hook";
+import Draggable from "../../../views/dnd/Draggable";
 
 export enum FormModeEnums {
   view = "view",
@@ -14,19 +15,22 @@ export enum FormModeEnums {
 export type TFormProps = {
   // mode?: FormModeEnums;
   // items?: FormItemProps[];
-  useFormis : ReturnType<typeof useFormis>;
+  useFormis: ReturnType<typeof useFormis>;
 };
 
 const Form = ({ useFormis }: TFormProps) => {
-
-  const { items , mode } = useFormis;
+  const { items, mode } = useFormis;
 
   return (
     <>
       <Droppable id="-1"></Droppable>
+      <Draggable id="salam">drag me</Draggable>
       {items.map((item: any, index: number) => (
         <div className="mt-1" key={`${item.id}`}>
-          <FormItemDraggable id={item.id} formItem={item}>
+          <FormItemDraggable id={item.id} formItem={{
+            ...item,
+            useFormis
+          }}>
             <FormItem type={item.type} {...item} useFormis={useFormis} index={index}></FormItem>
           </FormItemDraggable>
           <Droppable id={index}></Droppable>

@@ -2,7 +2,7 @@ import { Card, Code, Grid, Loader, LoadingOverlay, TextInput } from "@mantine/co
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useItemStore } from "./store/item.store";
 
-import { DndContext, DragOverlay } from "@dnd-kit/core";
+import { DndContext, DragOverlay, useDndMonitor } from "@dnd-kit/core";
 
 import FormPanel from "./modeler/Form.panel";
 import ToolboxPanel from "./modeler/Toolbox.panel";
@@ -26,7 +26,7 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
 
   // const items = useFormStore((state) => state.items);
 
-  const { items, addItem } = useFormis;
+  const { items, addItem, replaceItem } = useFormis;
 
   const [isDragging, setIsDragging] = useState(false);
   const [draggingItem, setDraggingItem] = useState<any>(null);
@@ -35,6 +35,12 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
   //   onChange(items);
   // }, [items]);
 
+  // useDndMonitor({
+  //   onDragStart(event) {
+  //     console.info("onDragStart : ", event);
+  //   },
+  // });
+
   return (
     <>
       FormModeler
@@ -42,9 +48,7 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
         <Grid columns={24} className="mt-6 text-sm">
           <Grid.Col span={8} className="border-gray-500 border border-solid">
             <Draggable id="test"> DRAG ME</Draggable>
-            <ToolboxPanel>
-              {/* <Draggable id="test"> DRAG ME</Draggable> */}
-            </ToolboxPanel>
+            <ToolboxPanel>{/* <Draggable id="test"> DRAG ME</Draggable> */}</ToolboxPanel>
           </Grid.Col>
           <Grid.Col span={16} className="border-gray-500 border border-solid relative">
             <LoadingOverlay visible={false} />
@@ -59,9 +63,8 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
             <>
               {/* {draggingItem?.active.id} */}
               <div className="bg-white">
-                {/* <FormItem
-                  {...draggingItem?.active.data.current.formItem}
-                ></FormItem> */}
+                {/* salam */}
+                <FormItem {...draggingItem?.active.data.current.formItem}></FormItem>
               </div>
             </>
           ) : null}
@@ -78,7 +81,7 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
     console.log("🚀 ~ file: FormisModeler.tsx:61 ~ handleDragStart ~ event:", event);
     // setControl(event?.active?.id);
     setDraggingItem(event);
-    console.log(event);
+    // console.log(event);
     setIsDragging(true);
   }
 
@@ -93,16 +96,23 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
     setDraggingItem(null);
     setIsDragging(false);
 
+    const id = parseInt(event.over.id);
+
     const { control, formItem } = event.active.data.current;
+
+    if (!control && !formItem) return;
+
+    if (formItem) {
+      replaceItem(formItem.id, id);
+      return;
+    }
 
     const item = control || formItem;
 
     console.log("item : ", item);
-    const id = parseInt(event.over.id);
-    const x = event.over?.data?.current?.x;
-    let y = event.over?.data?.current?.y;
-
     console.log("id : ", id);
+    // const x = event.over?.data?.current?.x;
+    // let y = event.over?.data?.current?.y;
 
     // if (item.type == FormItemTypeEnum.Grid) {
     //   addItem(
@@ -123,11 +133,14 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
     //   );
     // }
 
-    addItem({
-      ...item,
-      // x,
-      // y: y + 1,
-    },id);
+    addItem(
+      {
+        ...item,
+        // x,
+        // y: y + 1,
+      },
+      id
+    );
   }
 };
 

@@ -1,4 +1,4 @@
-import { set } from "cypress/types/lodash";
+import { replace, set } from "cypress/types/lodash";
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 
@@ -14,6 +14,8 @@ export const useFormis = (props?: TUseFormisProps) => {
   const [items, setItems] = useState<any[]>(props?.items || []);
   //   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
   const [selectedItem, setSelectedItem] = useState<any>(null);
+
+  const createUUID = () => v4().replace(/-/g, "_");
 
   const addItem = (item: any, index: number) => {
     item.id = v4();
@@ -36,6 +38,12 @@ export const useFormis = (props?: TUseFormisProps) => {
 
   const updateItem = (index: number, item: any) => {
     setItems(items.map((it, i) => (i === index ? item : it)));
+  };
+
+  const replaceItem = (id: string, nextIndex: number) => {
+    const prevIndex = items.findIndex((i: any) => i.id === id);
+    items.splice(nextIndex + 1, 0, items.splice(prevIndex, 1)[0]);
+    setItems(items);
   };
 
   const selectItem = (id: string | undefined) => {
@@ -63,6 +71,7 @@ export const useFormis = (props?: TUseFormisProps) => {
     addItem,
     deleteItem,
     updateItem,
+    replaceItem,
     selectedItem,
     selectItem,
   };

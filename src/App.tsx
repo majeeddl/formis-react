@@ -15,7 +15,7 @@ function App() {
   const formis = useFormis({
     items: [
       {
-        id: v4(),
+        id: 1,
         type: "input",
         label: "Name 1",
         parent: null,
@@ -23,7 +23,7 @@ function App() {
         // y: 1,
       },
       {
-        id: v4(),
+        id: 2,
         type: "input",
         label: "Name 2",
         parent: null,
