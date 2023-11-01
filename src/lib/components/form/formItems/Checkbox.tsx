@@ -1,5 +1,5 @@
-import React from "react";
-import { Checkbox as CheckboxMantine } from "@mantine/core";
+import React, { memo } from "react";
+import { Checkbox as CheckboxMantine, Group } from "@mantine/core";
 import { v4 } from "uuid";
 
 const Checkbox = ({
@@ -7,18 +7,18 @@ const Checkbox = ({
   description = "",
   // defaultValue = [],
   required = false,
-    value = [],
+  value = [],
   data = [
     { label: "item 1", value: "1" },
     { label: "item 2", value: "2" },
   ],
-  onChange = (e:any) => {
+  onChange = (e: any) => {
     console.log(e);
   },
 }) => {
   //  const [chekcboxValue, setChekcboxValue] = useState(value);
 
-  const customAttr:any = {};
+  const customAttr: any = {};
 
   if (required) {
     customAttr["withAsterisk"] = true;
@@ -34,12 +34,14 @@ const Checkbox = ({
         onChange={onChange}
         {...customAttr}
       >
-        {data.map(({ label: _label, value: _value }, index) => (
-          <CheckboxMantine key={`${v4()}`} value={_value} label={_label} />
-        ))}
+        <Group>
+          {data.map(({ label: _label, value: _value }, index) => (
+            <CheckboxMantine key={`${v4()}`} value={_value} label={_label} />
+          ))}
+        </Group>
       </CheckboxMantine.Group>
     </>
   );
 };
 
-export default Checkbox;
+export default memo(Checkbox);

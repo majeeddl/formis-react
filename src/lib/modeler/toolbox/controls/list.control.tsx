@@ -1,58 +1,62 @@
-import { FormItemTypeEnum } from "../../../components/form/FormItem";
+import { TFormItemType } from "../../../components/form/FormItem";
+// import { TGridColProps } from "../../../components/form/formItems/layouts/Grid";
 
-export const controlsList = [
+export const controlsList: {
+  type: TFormItemType | "_divider";
+  label: string;
+}[] = [
   {
     type: "_divider",
     label: "Elements",
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.Label,
+    type: "label",
     label: "Label",
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.Input,
+    type: "input",
     label: "Text Input",
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.Textarea,
+    type: "textarea",
     label: "Text Area",
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.NumberInput,
+    type: "number",
     label: "Number Input",
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.Radio,
+    type: "radio",
     label: "Radio",
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.Checkbox,
+    type: "checkbox",
     label: "Checkbox",
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.Switch,
+    type: "switch",
     label: "Switch",
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.Select,
+    type: "select",
     label: "Select",
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.MultiSelect,
+    type: "multiSelect",
     label: "Multi Select",
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.Button,
+    type: "button",
     label: "Button",
     // icon: "test",
   },
@@ -62,22 +66,22 @@ export const controlsList = [
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.Grid,
+    type: "grid",
     label: "Grid",
-    cols: 2,
+    cols: [],
   },
   {
-    type: FormItemTypeEnum.Divider,
+    type: "divider",
     label: "Divider",
 
     // icon: "test",
   },
   {
-    type: FormItemTypeEnum.Card,
+    type: "card",
     label: "Card",
   },
   {
-    type: FormItemTypeEnum.Tabs,
+    type: "tabs",
     label: "Tabs",
   },
 ];

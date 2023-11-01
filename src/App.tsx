@@ -15,21 +15,39 @@ function App() {
   const formis = useFormis({
     items: [
       {
-        id: 1,
+        id: "1",
         type: "input",
         label: "Name 1",
         parent: null,
+        ancestors: [],
         // x: 0,
         // y: 1,
       },
       {
-        id: 2,
+        id: " 2",
         type: "input",
         label: "Name 2",
         parent: null,
+        ancestors: [],
         // x: 0,
         // y: 0,
       },
+      // {
+      //   id: "3",
+      //   type: "grid",
+      //   label: "grid",
+      //   parent: null,
+      //   cols: [
+      //     {
+      //       id: "3-1",
+      //       span: 12,
+      //     },
+      //     {
+      //       id: "3-2",
+      //       span: 12,
+      //     },
+      //   ],
+      // },
     ],
   });
   return (

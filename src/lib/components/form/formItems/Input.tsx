@@ -1,22 +1,26 @@
 import React from "react";
-import { Input as InputMantine } from "@mantine/core";
+import { Input as InputMantine, TextInput, TextInputProps } from "@mantine/core";
+
+export type TInputProps = TextInputProps & {
+  required ?: boolean;
+};
 
 const Input = ({
   label = "input",
   description = "",
   placeholder = "",
-  icon = null,
+  leftSection = null,
   disabled = false,
-  invalid = false,
+  // invalid = false,
   required = false,
   error = "",
   ...props
-}) => {
+}: TInputProps) => {
   return (
     <>
-      {icon}
+      {/* {leftSection} */}
       {/* <InputMantine icon={icon} placeholder={placeholder} disabled invalid /> */}
-      <InputMantine.Wrapper
+      {/* <InputMantine.Wrapper
         withAsterisk={required}
         label={label}
         description={description}
@@ -26,10 +30,18 @@ const Input = ({
           placeholder={placeholder}
           disabled={disabled}
           // invalid={invalid}
-          {...(icon ? { icon } : {})}
+          {...(leftSection ? { leftSection } : {})}
           {...props}
         />
-      </InputMantine.Wrapper>
+      </InputMantine.Wrapper> */}
+
+      <TextInput
+        label={label}
+        description={description}
+        withAsterisk={required}
+        {...(leftSection ? { leftSection } : {})}
+        {...props}
+      ></TextInput>
     </>
   );
 };

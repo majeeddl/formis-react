@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
-import { FormItemProps, FormItemTypeEnum } from "../components/form/FormItem";
+import { TFormItemProps } from "../components/form/FormItem";
 import { v4 } from "uuid";
 import { stat } from "fs";
 
 interface IFormStore {
-  items: FormItemProps[] | any;
+  items: TFormItemProps[] | any;
   getItem: (id: string) => any;
   setItems: (items: any) => void;
   addItem: (item: any, index?: number) => void;
@@ -64,8 +64,7 @@ export const useFormStore = create<IFormStore>()(
     setItems: (items: any) => set({ items }),
     addItem: (item: any, index?: number) =>
       set((state: any) => {
-        const findParent =
-          state.items.find((i: any) => i.id === item.parent) || null;
+        const findParent = state.items.find((i: any) => i.id === item.parent) || null;
         const newItem = { ...item, id: v4(), parent: findParent?.id || null };
 
         const y = newItem.y || 0;
@@ -88,7 +87,7 @@ export const useFormStore = create<IFormStore>()(
         state.items.splice(index, 1);
         return {
           items: state.items,
-        }
+        };
       }),
     clear: () => set({ items: [] }),
     setSelected: (id: string) =>

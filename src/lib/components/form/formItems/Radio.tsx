@@ -1,18 +1,26 @@
-import React, { useState } from "react";
-import { Radio as RadioMantine } from "@mantine/core";
+import React, { useEffect, useState } from "react";
+import { Group, Radio as RadioMantine } from "@mantine/core";
 import { v4 } from "uuid";
 
 const Radio = ({
   label = "",
   description = "",
   required = false,
-  data = [],
+  data = [
+    {
+      label: "yes",
+      value: "yes",
+    },
+    {
+      label: "no",
+      value: "no",
+    },
+  ],
   value = null,
-  onChange = ()=>{},
+  onChange = (e:any) => {},
   ...props
 }) => {
-
-  // const [radioValue, setRadioValue] = useState(value)
+  const [radioValue, setRadioValue] = useState(value);
 
   const customAttr: any = {};
 
@@ -20,19 +28,24 @@ const Radio = ({
     customAttr["withAsterisk"] = true;
   }
 
+  useEffect(() => {
+    onChange(radioValue);
+  }, [radioValue]);
   return (
     <>
       <RadioMantine.Group
-        name=""
+        name="test"
         label={label}
         description={description}
-        value={value}
-        onChange={onChange}
+        value={radioValue}
+        onChange={setRadioValue}
         {...customAttr}
       >
-        {data.map(({ label: _label, value: _value }, index) => (
-          <RadioMantine key={v4()} value={_value} label={_value} />
-        ))}
+        <Group>
+          {data.map(({ label: _label, value: _value }, index) => (
+            <RadioMantine key={v4()} value={_value} label={_value} />
+          ))}
+        </Group>
       </RadioMantine.Group>
     </>
   );

@@ -1,19 +1,14 @@
 import React, { FC } from "react";
-import { Grid } from "@mantine/core";
+import { Grid, GridColProps } from "@mantine/core";
 
-interface ColPropsType extends React.ComponentPropsWithoutRef<typeof MantineCol> {
-  span: number;
+interface ColPropsType extends GridColProps {
   children?: any;
 }
 
 const Col = ({ span, children, ...props }: ColPropsType) => {
   return (
     <>
-      <Grid.Col
-        // span={span} lg={span}
-        span={span}
-        {...props}
-      >
+      <Grid.Col span={span} {...props}>
         {children}
       </Grid.Col>
     </>
