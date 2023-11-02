@@ -1,12 +1,13 @@
 import React from "react";
-import { TFormState } from "../FormItem";
-import { useFormis } from "../../../hooks/formis.hook";
+import { TFormState } from "./FormItem";
+import { useFormis } from "../../hooks/formis.hook";
 import { modals } from "@mantine/modals";
 import { ActionIcon, Group, Text } from "@mantine/core";
 import { IconArrowsMove, IconTrash } from "@tabler/icons-react";
+import { useFormisItemsDispatch } from "../../context/formis.items.context";
 
 type TFormItemWrapperProps = {
-  id?: string;
+  id: string;
   selected: boolean;
   index?: number;
   listeners?: any;
@@ -21,10 +22,13 @@ const FormItemWrapper = ({
   listeners,
   selected = false,
   setActivatorNodeRef,
-  useFormis,
+  // useFormis,
+  mode = "edit",
   children,
 }: TFormItemWrapperProps) => {
-  const { deleteItem, selectItem, mode } = useFormis;
+  // const { deleteItem, selectItem, mode } = useFormis;
+
+  const dispatch = useFormisItemsDispatch();
 
   const openModal = () =>
     modals.openConfirmModal({
@@ -38,7 +42,13 @@ const FormItemWrapper = ({
       labels: { confirm: "Yes I am sure", cancel: "No don't" },
       confirmProps: { color: "red" },
       onCancel: () => console.log("Cancel"),
-      onConfirm: () => deleteItem(id),
+      onConfirm: () =>
+        dispatch({
+          type: "delete",
+          payload: {
+            id,
+          },
+        }),
     });
 
   if (mode == "view") {
@@ -55,7 +65,12 @@ const FormItemWrapper = ({
       }}
       onClick={(e) => {
         e.stopPropagation();
-        selectItem(id);
+        dispatch({
+          type: "select",
+          payload: {
+            id,
+          },
+        });
       }}
     >
       <Group justify="space-between">

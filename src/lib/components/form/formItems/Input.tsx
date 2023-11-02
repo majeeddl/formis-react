@@ -1,8 +1,10 @@
 import React from "react";
 import { Input as InputMantine, TextInput, TextInputProps } from "@mantine/core";
+import { useForm } from "@mantine/form";
 
 export type TInputProps = TextInputProps & {
-  required ?: boolean;
+  required?: boolean;
+  form: ReturnType<typeof useForm>;
 };
 
 const Input = ({
@@ -14,6 +16,7 @@ const Input = ({
   // invalid = false,
   required = false,
   error = "",
+  form,
   ...props
 }: TInputProps) => {
   return (
@@ -41,6 +44,7 @@ const Input = ({
         withAsterisk={required}
         {...(leftSection ? { leftSection } : {})}
         {...props}
+        {...form.getInputProps("name")}
       ></TextInput>
     </>
   );

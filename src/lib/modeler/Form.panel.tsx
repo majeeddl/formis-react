@@ -4,13 +4,15 @@ import { useFormStore } from "../store/form.store";
 import { useFormis } from "../hooks/formis.hook";
 
 type TFormPanelProps = {
-  useFormis: ReturnType<typeof useFormis>;
+  // useFormis: ReturnType<typeof useFormis>;
 };
 
-const FormPanel = ({ useFormis }: TFormPanelProps) => {
+const FormPanel = (
+  { }: TFormPanelProps
+  ) => {
   return (
     <>
-      <Form useFormis={useFormis}></Form>
+      <Form></Form>
     </>
   );
 };

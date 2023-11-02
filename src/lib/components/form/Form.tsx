@@ -6,7 +6,8 @@ import Droppable from "./common/Droppable";
 import FormItemDraggable from "./common/Draggable.formItem";
 import { useFormis } from "../../hooks/formis.hook";
 import Draggable from "../../../views/dnd/Draggable";
-import { FormisContext } from "../../Formis";
+import { useFormisItems } from "../../context/formis.items.context";
+import { useForm } from "@mantine/form";
 
 export enum FormModeEnums {
   view = "view",
@@ -16,19 +17,29 @@ export enum FormModeEnums {
 export type TFormProps = {
   // mode?: FormModeEnums;
   // items?: FormItemProps[];
-  useFormis: ReturnType<typeof useFormis>;
+  // useFormis: ReturnType<typeof useFormis>;
 };
 
-const Form = ({ useFormis }: TFormProps) => {
+const Form = ({}: TFormProps) => {
   // const { items, mode } = useFormis;
 
-  const items: any = useContext(FormisContext);
+  const items: any = useFormisItems();
 
   const _items = items.filter((item: any) => item.parent == null);
 
-  useEffect(() => {
-    console.log("items : ", items);
-  }, [items, _items]);
+  // useEffect(() => {
+  //   console.log("items : ", items);
+  // }, [items, _items]);
+
+  const form = useForm({
+    initialValues: {
+      name: "test",
+    },
+    validate: {},
+    initialErrors: {
+      name: "error",
+    },
+  });
 
   return (
     <>
@@ -39,10 +50,10 @@ const Form = ({ useFormis }: TFormProps) => {
             id={item.id}
             formItem={{
               ...item,
-              useFormis,
+              // useFormis,
             }}
           >
-            <FormItem type={item.type} {...item} useFormis={useFormis} index={index}></FormItem>
+            <FormItem type={item.type} {...item} index={index} form={form}></FormItem>
           </FormItemDraggable>
           <Droppable id={item.id}>{/* {item.id} */}</Droppable>
         </div>

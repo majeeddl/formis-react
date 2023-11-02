@@ -15,7 +15,7 @@ import { useFormStore } from "../../store/form.store";
 import { modals } from "@mantine/modals";
 import { useFormis } from "../../hooks/formis.hook";
 import { memo, useEffect } from "react";
-import FormItemWrapper from "./formItems/FormItemWrapper";
+import FormItemWrapper from "./FormItemWrapper";
 
 // export enum FormItemStateEnum {
 //   View = "view",
@@ -72,7 +72,7 @@ type TBaseItemProps = TGridProps & TGridColProps & TInputProps & TButtonProps;
 
 export type TFormItemProps = TBaseItemProps & {
   useFormis: ReturnType<typeof useFormis>;
-  id?: string;
+  id: string;
   // x: number;
   // y: number;
   index?: number;
@@ -83,7 +83,6 @@ export type TFormItemProps = TBaseItemProps & {
   parent?: string | null;
   ancestors?: string[];
   selected?: boolean;
-
   styles?: any;
 
   // props?: TGridProps | TInputProps | TButtonProps;
@@ -103,7 +102,7 @@ const FormItem = ({
   useFormis,
   ...props
 }: TFormItemProps) => {
-  const { deleteItem, selectItem, mode } = useFormis;
+  // const { deleteItem, selectItem, mode } = useFormis;
 
   // const openModal = () =>
   //   modals.openConfirmModal({
@@ -129,13 +128,13 @@ const FormItem = ({
       <FormItemWrapper
         useFormis={useFormis}
         selected={selected}
-        id={props?.id}
+        id={props.id}
         index={index}
         listeners={listeners}
         setActivatorNodeRef={setActivatorNodeRef}
         {...props}
       >
-        {type == "grid" && <Grid useFormis={useFormis} {...props}></Grid>}
+        {type == "grid" && <Grid {...props}></Grid>}
         {type == "tabs" && <Tabs {...props}></Tabs>}
         {type == "divider" && <Divider {...props}></Divider>}
 
@@ -157,4 +156,4 @@ const FormItem = ({
   );
 };
 
-export default memo(FormItem);
+export default FormItem;

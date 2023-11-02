@@ -7,6 +7,7 @@ import { useItemStore } from "../../../../store/item.store";
 import { ConditionalWrapper } from "../../../../../components/utils/ConditionalWrapper";
 import { ItemDragTargetTypeEnums } from "../../../../modeler/toolbox/controls/Item.control";
 import Droppable from "../../common/Droppable";
+import { useFormisItems } from "../../../../context/formis.items.context";
 
 export type TGridColProps = GridColProps & {
   id?: string | null;
@@ -24,29 +25,31 @@ export type TGridProps = {
 const Grid = ({
   id,
   columns = 24,
-  useFormis,
+  // useFormis,
   setActivatorNodeRef,
   listeners,
   ...props
 }: Omit<TFormItemProps, "type">) => {
   // const _items = useItemStore((state: any) => state.items.filter((item: any) => item.parent == id));
 
-  const cols = useFormis.items.filter((item: any) => item.parent == id);
+  const items = useFormisItems();
+
+  const cols = items.filter((item: any) => item.parent == id);
 
   return (
     <>
       <MantineGrid columns={columns} className="border m-1">
         {cols.map((item, index) => (
-          <Col span={item?.span || 12} key={`s_${index}`} p={2}>
+          <Col span={item?.span || 12} key={`s_${item.id}`} p={2}>
             <div className="border p-2 pb-3" style={{ minHeight: 80 }}>
               {
                 <>
                   <Droppable id={`${item.id}_${item.id}`}>{/* {`${item.id}_${item.id}`} */}</Droppable>
-                  {useFormis.items
+                  {items
                     .filter((_item: any) => _item.parent == item.id)
                     .map((_item: any, _index: number) => (
                       <React.Fragment key={`${_item.id}_${index}`}>
-                        <FormItem useFormis={useFormis} {..._item}></FormItem>
+                        <FormItem {..._item}></FormItem>
                         <Droppable id={`${_item.id}_${item.id}`}>{/* {`${_item.id}_${item.id}`} */}</Droppable>
                       </React.Fragment>
                     ))}

@@ -13,22 +13,20 @@ import FormItem from "./components/form/FormItem";
 import { useFormStore } from "./store/form.store";
 import { useFormis } from "./hooks/formis.hook";
 import { useForm } from "@mantine/form";
-import { FormisContext, FormisDispatchContext } from "./Formis";
+import { useFormisItems, useFormisItemsDispatch } from "./context/formis.items.context";
 
 type FormisModelerProps = {
   items?: any;
   onChange?: (items: any) => {};
   onSave?: (items: any) => {};
-  useFormis: ReturnType<typeof useFormis>;
+  // useFormis: ReturnType<typeof useFormis>;
 };
-// show me an example of forwardRef with type annotation in typescript react
 
-const FormModeler = ({ useFormis }: FormisModelerProps) => {
-  const items = useContext(FormisContext);
-  const dispatch = useContext(FormisDispatchContext);
-  const { addItem, replaceItem } = useFormis;
+const FormModeler = ({}: FormisModelerProps) => {
+  const items = useFormisItems();
+  const dispatch = useFormisItemsDispatch();
+  // const { addItem, replaceItem } = useFormis;
 
-  const form = useForm({});
 
   const [isDragging, setIsDragging] = useState(false);
   const [draggingItem, setDraggingItem] = useState<any>(null);
@@ -44,7 +42,7 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
   // });
   useEffect(() => {
     console.warn("useFormis : changes ");
-  }, [useFormis.items]);
+  }, [items]);
 
   return (
     <>
@@ -53,12 +51,12 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
         <Grid columns={24} className="mt-6 text-sm">
           <Grid.Col span={8} className="border-gray-500 border border-solid">
             {/* <Draggable id="test"> DRAG ME</Draggable> */}
-            <ToolboxPanel>{/* <Draggable id="test"> DRAG ME</Draggable> */}</ToolboxPanel>
+            <ToolboxPanel></ToolboxPanel>
           </Grid.Col>
           <Grid.Col span={16} className="border-gray-500 border border-solid relative">
             <LoadingOverlay visible={false} />
             <form>
-              <FormPanel useFormis={useFormis}></FormPanel>
+              <FormPanel></FormPanel>
             </form>
           </Grid.Col>
         </Grid>
@@ -70,7 +68,6 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
             <>
               {/* {draggingItem?.active.id} */}
               <div className="bg-white">
-                {/* salam */}
                 <FormItem {...draggingItem?.active.data.current.formItem}></FormItem>
               </div>
             </>
@@ -110,7 +107,15 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
     if (!control && !formItem) return;
 
     if (formItem) {
-      replaceItem(formItem.id, id);
+      console.log("formItem : ", formItem);
+      console.log(id);
+      dispatch({
+        type: "replace",
+        payload: {
+          id: formItem.id,
+          next: id,
+        },
+      });
       return;
     }
 
@@ -152,8 +157,8 @@ const FormModeler = ({ useFormis }: FormisModelerProps) => {
     dispatch({
       type: "add",
       payload: {
-        ...item,
-        parent: id,
+        item : {...item},
+        _id: id,
       },
     });
   }

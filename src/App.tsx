@@ -2,7 +2,7 @@ import "./App.css";
 
 import { Formis } from "./lib/index";
 import DragAndDrop from "./views/DragAndDrop";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, Route, Routes } from "react-router-dom";
 import GridView from "./views/GridView";
 import MantineForm from "./views/MantineForm";
@@ -20,6 +20,7 @@ function App() {
         label: "Name 1",
         parent: null,
         ancestors: [],
+        required: true,
         // x: 0,
         // y: 1,
       },
@@ -80,7 +81,15 @@ function App() {
         </Navbar>
         <Container>
           <Routes>
-            <Route path="/" element={<Formis useFormis={formis}></Formis>}></Route>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Formis useFormis={formis}></Formis>
+                  <Button onClick={() => console.log(formis.getItems())}>get items</Button>
+                </>
+              }
+            ></Route>
             {/* <Route path="/" element={<FormisModeler></FormisModeler>}></Route> */}
             <Route path="/drag-and-drop" element={<DragAndDrop></DragAndDrop>}></Route>
             <Route path="/grid" element={<GridView></GridView>}></Route>
