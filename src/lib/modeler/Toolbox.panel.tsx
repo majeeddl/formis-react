@@ -1,12 +1,11 @@
 import { Tabs } from "@mantine/core";
 import { IconSettings, IconListDetails } from "@tabler/icons-react";
 
-
 import Controls from "./toolbox/Controls";
 import Settings from "./toolbox/Settings";
 import { useThemeStore } from "../store/theme.store";
 
-const ToolboxPanel = (props:any) => {
+const ToolboxPanel = (props: any) => {
   // const { dir } = useContext(ThemeContext);
 
   const dir = useThemeStore((state: any) => state.dir);
@@ -14,7 +13,7 @@ const ToolboxPanel = (props:any) => {
   return (
     <>
       <div dir={dir}>
-        <Tabs defaultValue="controls" className="text-xs">
+        <Tabs defaultValue="settings" className="text-xs">
           <Tabs.List>
             <Tabs.Tab
               value="controls"
@@ -24,11 +23,7 @@ const ToolboxPanel = (props:any) => {
             >
               Controls
             </Tabs.Tab>
-            <Tabs.Tab
-              value="settings"
-              data-cy="settings-tab"
-              leftSection={<IconSettings size={14} />}
-            >
+            <Tabs.Tab value="settings" data-cy="settings-tab" leftSection={<IconSettings size={14} />}>
               Settings
             </Tabs.Tab>
           </Tabs.List>
@@ -46,5 +41,3 @@ const ToolboxPanel = (props:any) => {
 };
 
 export default ToolboxPanel;
-
-
