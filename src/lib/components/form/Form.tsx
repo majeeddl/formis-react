@@ -6,8 +6,9 @@ import Droppable from "./common/Droppable";
 import FormItemDraggable from "./common/Draggable.formItem";
 import { useFormis } from "../../hooks/formis.hook";
 import Draggable from "../../../views/dnd/Draggable";
-import { useFormisItems } from "../../context/formis.items.context";
-import { useForm } from "@mantine/form";
+import { useFormisItems, useFormisItemsDispatch } from "../../context/formis.items.context";
+import { hasLength, useForm } from "@mantine/form";
+import math from "../../lib/math.lib";
 
 export enum FormModeEnums {
   view = "view",
@@ -24,6 +25,7 @@ const Form = ({}: TFormProps) => {
   // const { items, mode } = useFormis;
 
   const items: any = useFormisItems();
+  const dispatch = useFormisItemsDispatch();
 
   const _items = items.filter((item: any) => item.parent == null);
 
@@ -31,15 +33,31 @@ const Form = ({}: TFormProps) => {
   //   console.log("items : ", items);
   // }, [items, _items]);
 
-  const form = useForm({
-    initialValues: {
-      name: "test",
-    },
-    validate: {},
-    initialErrors: {
-      name: "error",
-    },
+  const [validate, setValidate] = useState<any>({
+    name: hasLength({ min: 3, max: 20 }, "Name must be between 3 and 20 characters"),
   });
+
+  const form: ReturnType<typeof useForm> = useForm({
+    validateInputOnChange: true,
+    validateInputOnBlur: true,
+    initialValues: {
+      name: "",
+    },
+    // validate: (values)=>{
+    //   return validate;
+    // },
+    // initialErrors: {
+    //   name: "",
+    // },
+  });
+
+  useEffect(() => {
+    // console.log("form values changes");
+    // console.log(form.values);
+
+    // form.validate();
+    //
+  }, [form.values]);
 
   return (
     <>
@@ -59,15 +77,23 @@ const Form = ({}: TFormProps) => {
         </div>
       ))}
 
-      {/* <div
-        style={{
-          padding: 40,
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          form.setFieldError("name", "salam");
+          console.log(form.errors);
+          // dispatch({
+          //   type: "update",
+          //   payload: {
+          //     id: "1",
+          //     label: "majeed",
+          //     validate: `isEmail(value,'Invalid email')`,
+          //   },
+          // });
         }}
       >
-        ------
-      </div> */}
-
-      {/* <button onClick={() => console.log(items)}>button</button> */}
+        button
+      </button>
     </>
   );
 };

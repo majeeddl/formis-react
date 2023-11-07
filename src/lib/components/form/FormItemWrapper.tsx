@@ -25,6 +25,7 @@ const FormItemWrapper = ({
   // useFormis,
   mode = "edit",
   children,
+  ...props
 }: TFormItemWrapperProps) => {
   // const { deleteItem, selectItem, mode } = useFormis;
 
