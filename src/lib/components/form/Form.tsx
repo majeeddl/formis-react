@@ -37,7 +37,7 @@ const Form = ({}: TFormProps) => {
     name: hasLength({ min: 3, max: 20 }, "Name must be between 3 and 20 characters"),
   });
 
-  const form: ReturnType<typeof useForm> = useForm({
+  const form = useForm({
     validateInputOnChange: true,
     validateInputOnBlur: true,
     initialValues: {
@@ -54,7 +54,6 @@ const Form = ({}: TFormProps) => {
   useEffect(() => {
     // console.log("form values changes");
     // console.log(form.values);
-
     // form.validate();
     //
   }, [form.values]);
