@@ -4,9 +4,14 @@ import React, { useEffect, useState } from "react";
 // import * as math from "mathjs";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import math from "../../lib/math.lib";
+import { useFormisItems, useFormisItemsDispatch } from "../../context/formis.items.context";
 
 const Settings = () => {
   const [size, setSize] = useState("xs");
+
+  const items = useFormisItems();
+  const selected = items.find((i: any) => i.selected);
+  const itemDispatch = useFormisItemsDispatch();
 
   // console.log();
   // var x = math.compile(`hasLength({ min: 3, max: 20 }, "it is not correct")`);
@@ -41,13 +46,24 @@ const Settings = () => {
 
   // console.log(form)
 
+  const changeSettings = (e: any) => {
+    console.log(e.target.name);
+    console.log(e.target.value);
+  };
+
   useEffect(() => {
     // console.log(JSON.stringify(form.values));
   }, [form.values]);
+
+  useEffect(() => {
+    console.log(selected);
+  }, [selected]);
+
+  useEffect(() => {}, []);
   return (
     <>
-      <form onChange={(e: any) => console.log(e.target?.value)}>
-        <TextInput label="Name" {...form.getInputProps("name")} size={size} withAsterisk></TextInput>
+      <form onChange={changeSettings}>
+        <TextInput label="Name" name="name" {...form.getInputProps("name")} size={size} withAsterisk></TextInput>
         <TextInput label="Label" {...form.getInputProps("label")} size={size}></TextInput>
         <TextInput label="Description" {...form.getInputProps("description")} size={size}></TextInput>
         <TextInput label="Placeholder" {...form.getInputProps("placeholder")} size={size}></TextInput>
