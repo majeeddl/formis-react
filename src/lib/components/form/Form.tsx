@@ -6,7 +6,7 @@ import Droppable from "./common/Droppable";
 import FormItemDraggable from "./common/Draggable.formItem";
 import { useFormis } from "../../hooks/formis.hook";
 import Draggable from "../../../views/dnd/Draggable";
-import { useFormisItems, useFormisItemsDispatch } from "../../context/formis.items.context";
+import { useFormisContext, useFormisDispatchContext } from "../../context/formis.context";
 import { hasLength, useForm } from "@mantine/form";
 import math from "../../lib/math.lib";
 
@@ -24,8 +24,8 @@ export type TFormProps = {
 const Form = ({}: TFormProps) => {
   // const { items, mode } = useFormis;
 
-  const items: any = useFormisItems();
-  const dispatch = useFormisItemsDispatch();
+  const { items, form }: any = useFormisContext();
+  const { dispatchItems } = useFormisDispatchContext();
 
   const _items = items.filter((item: any) => item.parent == null);
 
@@ -37,19 +37,19 @@ const Form = ({}: TFormProps) => {
     name: hasLength({ min: 3, max: 20 }, "Name must be between 3 and 20 characters"),
   });
 
-  const form = useForm({
-    validateInputOnChange: true,
-    validateInputOnBlur: true,
-    initialValues: {
-      name: "",
-    },
-    // validate: (values)=>{
-    //   return validate;
-    // },
-    // initialErrors: {
-    //   name: "",
-    // },
-  });
+  // const form = useForm({
+  //   validateInputOnChange: true,
+  //   validateInputOnBlur: true,
+  //   initialValues: {
+  //     name: "",
+  //   },
+  //   // validate: (values)=>{
+  //   //   return validate;
+  //   // },
+  //   // initialErrors: {
+  //   //   name: "",
+  //   // },
+  // });
 
   useEffect(() => {
     // console.log("form values changes");
@@ -70,13 +70,13 @@ const Form = ({}: TFormProps) => {
               // useFormis,
             }}
           >
-            <FormItem type={item.type} {...item} index={index} form={form}></FormItem>
+            <FormItem type={item.type} {...item} index={index}></FormItem>
           </FormItemDraggable>
           <Droppable id={item.id}>{/* {item.id} */}</Droppable>
         </div>
       ))}
 
-      <button
+      {/* <button
         onClick={(e) => {
           e.preventDefault();
           form.setFieldError("name", "salam");
@@ -92,7 +92,7 @@ const Form = ({}: TFormProps) => {
         }}
       >
         button
-      </button>
+      </button> */}
     </>
   );
 };

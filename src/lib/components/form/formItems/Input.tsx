@@ -1,6 +1,7 @@
 import React from "react";
 import { Input as InputMantine, TextInput, TextInputProps } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { useFormisContext } from "../../../context/formis.context";
 
 export type TInputProps = TextInputProps & {
   required?: boolean;
@@ -8,6 +9,7 @@ export type TInputProps = TextInputProps & {
 };
 
 const Input = ({
+  name = "name",
   label = "input",
   description = "",
   placeholder = "",
@@ -16,9 +18,10 @@ const Input = ({
   // invalid = false,
   required = false,
   error = "",
-  form,
   ...props
 }: TInputProps) => {
+  const { form } = useFormisContext();
+
   return (
     <>
       {/* {leftSection} */}
@@ -41,10 +44,12 @@ const Input = ({
       <TextInput
         label={label}
         description={description}
+        placeholder={placeholder}
         withAsterisk={required}
+        disabled={disabled}
         {...(leftSection ? { leftSection } : {})}
         {...props}
-        {...form.getInputProps("name")}
+        {...form.getInputProps(name)}
       ></TextInput>
     </>
   );

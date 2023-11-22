@@ -13,7 +13,7 @@ import FormItem from "./components/form/FormItem";
 import { useFormStore } from "./store/form.store";
 import { useFormis } from "./hooks/formis.hook";
 import { useForm } from "@mantine/form";
-import { useFormisItems, useFormisItemsDispatch } from "./context/formis.items.context";
+import { useFormisContext, useFormisDispatchContext } from "./context/formis.context";
 
 type FormisModelerProps = {
   items?: any;
@@ -23,10 +23,9 @@ type FormisModelerProps = {
 };
 
 const FormModeler = ({}: FormisModelerProps) => {
-  const items = useFormisItems();
-  const dispatch = useFormisItemsDispatch();
+  const { items } = useFormisContext();
+  const { dispatchItems } = useFormisDispatchContext();
   // const { addItem, replaceItem } = useFormis;
-
 
   const [isDragging, setIsDragging] = useState(false);
   const [draggingItem, setDraggingItem] = useState<any>(null);
@@ -109,7 +108,7 @@ const FormModeler = ({}: FormisModelerProps) => {
     if (formItem) {
       console.log("formItem : ", formItem);
       console.log(id);
-      dispatch({
+      dispatchItems({
         type: "replace",
         payload: {
           id: formItem.id,
@@ -154,10 +153,10 @@ const FormModeler = ({}: FormisModelerProps) => {
     //   id
     // );
 
-    dispatch({
+    dispatchItems({
       type: "add",
       payload: {
-        item : {...item},
+        item: { ...item },
         _id: id,
       },
     });

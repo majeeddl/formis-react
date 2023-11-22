@@ -2,13 +2,14 @@ import React from "react";
 import { TFormState } from "./FormItem";
 import { useFormis } from "../../hooks/formis.hook";
 import { modals } from "@mantine/modals";
-import { ActionIcon, Group, Text } from "@mantine/core";
+import { ActionIcon, Code, Group, Text } from "@mantine/core";
 import { IconArrowsMove, IconTrash } from "@tabler/icons-react";
-import { useFormisItemsDispatch } from "../../context/formis.items.context";
+import { useFormisDispatchContext } from "../../context/formis.context";
 
 type TFormItemWrapperProps = {
   id: string;
   selected: boolean;
+  name?: string;
   index?: number;
   listeners?: any;
   setActivatorNodeRef?: any;
@@ -29,7 +30,7 @@ const FormItemWrapper = ({
 }: TFormItemWrapperProps) => {
   // const { deleteItem, selectItem, mode } = useFormis;
 
-  const dispatch = useFormisItemsDispatch();
+  const { dispatchItems } = useFormisDispatchContext();
 
   const openModal = () =>
     modals.openConfirmModal({
@@ -44,7 +45,7 @@ const FormItemWrapper = ({
       confirmProps: { color: "red" },
       onCancel: () => console.log("Cancel"),
       onConfirm: () =>
-        dispatch({
+        dispatchItems({
           type: "delete",
           payload: {
             id,
@@ -66,7 +67,7 @@ const FormItemWrapper = ({
       }}
       onClick={(e) => {
         e.stopPropagation();
-        dispatch({
+        dispatchItems({
           type: "select",
           payload: {
             id,
@@ -80,6 +81,7 @@ const FormItemWrapper = ({
             {id} - index: {index}
             {/* - x : {props.x} - y : {props.y} */}
           </Text>
+          <Code fz={11}>{props?.name}</Code>
         </Group>
         <Group gap="xs">
           <ActionIcon variant="transparent" color="red.8" size={"xs"}>

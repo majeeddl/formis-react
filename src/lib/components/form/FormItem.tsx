@@ -102,27 +102,6 @@ const FormItem = ({
   useFormis,
   ...props
 }: TFormItemProps) => {
-  // const { deleteItem, selectItem, mode } = useFormis;
-
-  // const openModal = () =>
-  //   modals.openConfirmModal({
-  //     title: "Delete Confirmation",
-  //     centered: true,
-  //     children: (
-  //       <Text size="sm" color="red" fw={700}>
-  //         Are you sure you want to delete this item? This action is irreversible
-  //       </Text>
-  //     ),
-  //     labels: { confirm: "Yes I am sure", cancel: "No don't" },
-  //     confirmProps: { color: "red" },
-  //     onCancel: () => console.log("Cancel"),
-  //     onConfirm: () => deleteItem(props?.id),
-  //   });
-
-  // useEffect(() => {
-  //   console.log("selected has been changed")
-  // }, []);
-
   return (
     <>
       <FormItemWrapper

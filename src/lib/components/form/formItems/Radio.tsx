@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Group, Radio as RadioMantine } from "@mantine/core";
 import { v4 } from "uuid";
+import { useFormisContext } from "../../../context/formis.context";
 
 const Radio = ({
+  name = "radio",
   label = "",
   description = "",
   required = false,
@@ -17,9 +19,11 @@ const Radio = ({
     },
   ],
   value = null,
-  onChange = (e:any) => {},
+  onChange = (e: any) => {},
   ...props
 }) => {
+  const { form } = useFormisContext();
+
   const [radioValue, setRadioValue] = useState(value);
 
   const customAttr: any = {};
@@ -34,7 +38,7 @@ const Radio = ({
   return (
     <>
       <RadioMantine.Group
-        name="test"
+        name={name}
         label={label}
         description={description}
         value={radioValue}

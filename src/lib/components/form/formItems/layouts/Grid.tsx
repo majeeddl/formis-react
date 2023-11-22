@@ -7,7 +7,7 @@ import { useItemStore } from "../../../../store/item.store";
 import { ConditionalWrapper } from "../../../../../components/utils/ConditionalWrapper";
 import { ItemDragTargetTypeEnums } from "../../../../modeler/toolbox/controls/Item.control";
 import Droppable from "../../common/Droppable";
-import { useFormisItems } from "../../../../context/formis.items.context";
+import { useFormisContext } from "../../../../context/formis.context";
 
 export type TGridColProps = GridColProps & {
   id?: string | null;
@@ -32,14 +32,14 @@ const Grid = ({
 }: Omit<TFormItemProps, "type">) => {
   // const _items = useItemStore((state: any) => state.items.filter((item: any) => item.parent == id));
 
-  const items = useFormisItems();
+  const { items } = useFormisContext();
 
   const cols = items.filter((item: any) => item.parent == id);
 
   return (
     <>
       <MantineGrid columns={columns} className="border m-1">
-        {cols.map((item, index) => (
+        {cols.map((item: any, index: number) => (
           <Col span={item?.span || 12} key={`s_${item.id}`} p={2}>
             <div className="border p-2 pb-3" style={{ minHeight: 80 }}>
               {
@@ -54,27 +54,6 @@ const Grid = ({
                       </React.Fragment>
                     ))}
                 </>
-                // <ConditionalWrapper
-                //   condition={true}
-                //   wrapper={(children) => (
-                //     <div
-                //     // accept={ItemDragTargetTypeEnums.Item}
-                //     // index={index}
-                //     // parent={id}
-                //     >
-                //       {children}
-                //     </div>
-                //   )}
-                // >
-
-                //   {items
-                //     .filter((item: any) => item.index == index)
-                //     .map((item: any) => (
-                //       <>
-                //         <FormItem {...item}></FormItem>
-                //       </>
-                //     ))}
-                // </ConditionalWrapper>
               }
             </div>
           </Col>
