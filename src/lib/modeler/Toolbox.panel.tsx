@@ -5,6 +5,8 @@ import Controls from "./toolbox/Controls";
 import Settings from "./toolbox/Settings";
 import { useThemeStore } from "../store/theme.store";
 
+import classes from "./Toolbox.panel.module.css";
+
 const ToolboxPanel = (props: any) => {
   // const { dir } = useContext(ThemeContext);
 
@@ -13,7 +15,7 @@ const ToolboxPanel = (props: any) => {
   return (
     <>
       <div dir={dir}>
-        <Tabs defaultValue="settings" className="text-xs">
+        <Tabs defaultValue="settings" className="text-xs" variant="outline">
           <Tabs.List>
             <Tabs.Tab
               value="controls"
@@ -28,10 +30,10 @@ const ToolboxPanel = (props: any) => {
             </Tabs.Tab>
           </Tabs.List>
 
-          <Tabs.Panel value="controls" pt="xs">
+          <Tabs.Panel value="controls" pt="xs" className={classes.toolboxPanelControl}>
             <Controls></Controls>
           </Tabs.Panel>
-          <Tabs.Panel value="settings" pt="xs">
+          <Tabs.Panel value="settings" pt="xs" className={classes.toolboxPanelControl}>
             <Settings></Settings>
           </Tabs.Panel>
         </Tabs>

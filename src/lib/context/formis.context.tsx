@@ -33,8 +33,14 @@ type TFormisItemsAction =
         id: string;
       };
     };
-const FormisContext = createContext<any>({
+const FormisContext = createContext<{
+  items: any[];
+  selectedItem: any;
+  form: ReturnType<typeof useForm> | null;
+}>({
   items: [],
+  form: null,
+  selectedItem: null,
 });
 const FormisDispatchContext = createContext<{
   dispatchItems: Dispatch<TFormisItemsAction>;
@@ -51,6 +57,8 @@ const formisItemsReducer = (state: any, action: TFormisItemsAction) => {
 
       item.id = v4();
       item.selected = true;
+      item.ancestors = [];
+      item.datasource = null;
 
       let extraItems: any = [];
 
@@ -62,6 +70,7 @@ const formisItemsReducer = (state: any, action: TFormisItemsAction) => {
             span: 12,
             parent: item.id,
             ancestors: [...(items[items.length - 1]?.ancestors || []), item.id],
+            datasource: null,
           },
           {
             id: `${createUUID()}`,
@@ -69,8 +78,16 @@ const formisItemsReducer = (state: any, action: TFormisItemsAction) => {
             span: 12,
             parent: item.id,
             ancestors: [...(items[items.length - 1]?.ancestors || []), item.id],
+            datasource: null,
           },
         ];
+      }
+
+      if (item.type == "radio" || item.type == "checkbox") {
+        item.datasource = {
+          type: "client",
+          data: [],
+        };
       }
 
       let parent = null;
@@ -155,11 +172,11 @@ export const FormisContextProvider = ({ children, useFormis }: any) => {
 
   useFormis.getItems = () => items;
 
-  const form = useForm({
+  const form: any = useForm({
     validateInputOnChange: true,
     validateInputOnBlur: true,
     initialValues: {
-      name: "",
+      a: ["master"],
     },
     // validate: (values)=>{
     //   return validate;

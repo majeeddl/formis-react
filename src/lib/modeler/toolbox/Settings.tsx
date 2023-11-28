@@ -1,10 +1,12 @@
-import { Accordion, Grid, Switch, TextInput } from "@mantine/core";
+import { Accordion, Grid, Switch, Tabs, TextInput } from "@mantine/core";
 import { hasLength, matches, useForm, isEmail } from "@mantine/form";
 import React, { useEffect, useState } from "react";
 // import * as math from "mathjs";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import math from "../../lib/math.lib";
 import { useFormisContext, useFormisDispatchContext } from "../../context/formis.context";
+import Basic from "./settings/Basic";
+import Datasource from "./settings/Datasource";
 
 const Settings = () => {
   const [size, setSize] = useState("xs");
@@ -95,7 +97,7 @@ const Settings = () => {
 
     if (selectedItem?.id) {
       form.setValues({
-        name: selectedItem.name || "name1",
+        name: selectedItem.name,
         label: selectedItem.label || "label",
         description: selectedItem.description || "",
         placeholder: selectedItem.placeholder || "",
@@ -108,85 +110,34 @@ const Settings = () => {
   return (
     <>
       <form>
-        <Accordion defaultValue="basic" variant="contained">
+        {/* <Tabs defaultValue="gallery">
+          <Tabs.List>
+            <Tabs.Tab value="basic">Basic</Tabs.Tab>
+            <Tabs.Tab value="properties">Properties</Tabs.Tab>
+            <Tabs.Tab value="datasource">Datasource</Tabs.Tab>
+          </Tabs.List>
+
+          <Tabs.Panel value="basic">
+           
+          </Tabs.Panel>
+
+          <Tabs.Panel value="messages">Messages tab content</Tabs.Panel>
+
+          <Tabs.Panel value="settings">Settings tab content</Tabs.Panel>
+        </Tabs> */}
+        <Accordion defaultValue="datasource" variant="contained" radius="xs">
           <Accordion.Item value="basic">
-            <Accordion.Control icon={<></>}>Basic</Accordion.Control>
+            <Accordion.Control fz="xs" icon={<></>}>
+              Basic
+            </Accordion.Control>
             <Accordion.Panel>
-              <TextInput
-                name="name"
-                label="Name"
-                {...form.getInputProps("name")}
-                withAsterisk
-                onChange={(e) => {
-                  changeSettings(e);
-                  form.getInputProps("name").onChange(e);
-                }}
-                size={size}
-              ></TextInput>
-              <TextInput
-                label="Label"
-                name="label"
-                {...form.getInputProps("label")}
-                onChange={(e) => {
-                  changeSettings(e);
-                  form.getInputProps("label").onChange(e);
-                }}
-                size={size}
-              ></TextInput>
-
-              <TextInput
-                label="Description"
-                name="description"
-                {...form.getInputProps("description")}
-                onChange={(e) => {
-                  changeSettings(e);
-                  form.getInputProps("description").onChange(e);
-                }}
-                size={size}
-              ></TextInput>
-              {selectedItem?.type == "input" && (
-                <TextInput
-                  label="Placeholder"
-                  name="placeholder"
-                  {...form.getInputProps("placeholder")}
-                  onChange={(e) => {
-                    changeSettings(e);
-                    form.getInputProps("placeholder").onChange(e);
-                  }}
-                  size={size}
-                ></TextInput>
-              )}
-
-              <Grid>
-                <Grid.Col span={6} mt={"xs"}>
-                  <Switch
-                    label="Required"
-                    name="required"
-                    {...form.getInputProps("required", { type: "checkbox" })}
-                    onChange={(e) => {
-                      changeSettings(e);
-                      form.getInputProps("required").onChange(e);
-                    }}
-                    size={size}
-                  ></Switch>
-                </Grid.Col>
-                <Grid.Col span={6} mt={"xs"}>
-                  <Switch
-                    label="Disabled"
-                    name="disabled"
-                    {...form.getInputProps("disabled", { type: "checkbox" })}
-                    onChange={(e) => {
-                      changeSettings(e);
-                      form.getInputProps("disabled").onChange(e);
-                    }}
-                    size={size}
-                  ></Switch>
-                </Grid.Col>
-              </Grid>
+              <Basic form={form} size={size} selectedItem={selectedItem} changeSettings={changeSettings}></Basic>
             </Accordion.Panel>
           </Accordion.Item>
           <Accordion.Item value="validation">
-            <Accordion.Control icon={<></>}>Validation</Accordion.Control>
+            <Accordion.Control fz={"xs"} icon={<></>}>
+              Validation
+            </Accordion.Control>
             <Accordion.Panel>
               <div style={{ height: 300 }}>
                 <Editor
@@ -252,13 +203,16 @@ const Settings = () => {
                     },
                   }}
                 />
-                ;
               </div>
             </Accordion.Panel>
           </Accordion.Item>
-          <Accordion.Item value="configuration">
-            <Accordion.Control icon={<></>}>Configuration</Accordion.Control>
-            <Accordion.Panel></Accordion.Panel>
+          <Accordion.Item value="datasource">
+            <Accordion.Control fz={"xs"} icon={<></>}>
+              Datasource
+            </Accordion.Control>
+            <Accordion.Panel>
+              <Datasource></Datasource>
+            </Accordion.Panel>
           </Accordion.Item>
         </Accordion>
 

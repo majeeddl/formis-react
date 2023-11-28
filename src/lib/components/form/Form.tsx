@@ -51,12 +51,12 @@ const Form = ({}: TFormProps) => {
   //   // },
   // });
 
-  useEffect(() => {
-    // console.log("form values changes");
-    // console.log(form.values);
-    // form.validate();
-    //
-  }, [form.values]);
+  // useEffect(() => {
+  //   console.log("form values changes");
+  //   console.log(form.values);
+  //   // form.validate();
+  //   //
+  // }, [form.values]);
 
   return (
     <>

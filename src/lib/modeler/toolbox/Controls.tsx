@@ -8,7 +8,7 @@ import ControlDraggable from "./controls/Draggable.control";
 
 const Controls = () => {
   return (
-    <Grid gutter="xs">
+    <Grid gutter="xs" pb={"md"}>
       {controlsList.map((control, index) => {
         if (control.type == "_divider") {
           return (
@@ -19,7 +19,7 @@ const Controls = () => {
         }
 
         return (
-          <Grid.Col span={6} key={control.type}>
+          <Grid.Col span={6} key={control.type} pr={"xs"} pl={"xs"}>
             <ControlDraggable id={control.label} control={control}>
               <ControlItem name={control.label} data-cy={`control-item-${control.type}`} {...control}></ControlItem>
             </ControlDraggable>

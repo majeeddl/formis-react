@@ -99,13 +99,12 @@ const FormItem = ({
   listeners,
   selected = false,
   setActivatorNodeRef,
-  useFormis,
+
   ...props
 }: TFormItemProps) => {
   return (
     <>
       <FormItemWrapper
-        useFormis={useFormis}
         selected={selected}
         id={props.id}
         index={index}
