@@ -14,25 +14,30 @@ import { v4 } from "uuid";
 function App() {
   const formis = useFormis({
     items: [
-      {
-        id: "1",
-        type: "input",
-        label: "Name 1",
-        parent: null,
-        ancestors: [],
-        required: true,
-        // x: 0,
-        // y: 1,
-      },
-      {
-        id: " 2",
-        type: "input",
-        label: "Name 2",
-        parent: null,
-        ancestors: [],
-        // x: 0,
-        // y: 0,
-      },
+      // {
+      //   id: "1",
+      //   name: "name1",
+      //   type: "input",
+      //   label: "Name 1",
+      //   parent: null,
+      //   ancestors: [],
+      //   required: true,
+      //   disabled: false,
+      //   // x: 0,
+      //   // y: 1,
+      // },
+      // {
+      //   id: " 2",
+      //   type: "input",
+      //   name: "name2",
+      //   label: "Name 2",
+      //   parent: null,
+      //   ancestors: [],
+      //   required: false,
+      //   disabled: true,
+      //   // x: 0,
+      //   // y: 0,
+      // },
       // {
       //   id: "3",
       //   type: "grid",
@@ -49,6 +54,28 @@ function App() {
       //     },
       //   ],
       // },
+      {
+        id: "a",
+        type: "checkbox",
+        label: "checkbox",
+        parent: null,
+        ancestors: [],
+        datasource: {
+          type: "client",
+          data: [
+            {
+              key: "master",
+              value: "master",
+              linked: true,
+            },
+            {
+              key: "degree",
+              value: "degree",
+              linked: true,
+            },
+          ],
+        },
+      },
     ],
   });
   return (
