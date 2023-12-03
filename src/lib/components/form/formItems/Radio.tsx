@@ -71,7 +71,7 @@ const Radio = ({
         {...customAttr}
       >
         <Flex direction={direction} gap="md" align="center">
-          {datasource?.data.map(({ label: _label, value: _value }, index) => (
+          {datasource?.data.map(({ label: _label, value: _value }: any, index: number) => (
             <RadioMantine key={v4()} value={_value} label={_value} />
           ))}
         </Flex>
